@@ -35,7 +35,7 @@ public class RoadController
             System.out.println(car);
 
             //Пропускаем автомобили спецтранспорта бесплатно
-            if (car.isSpecial) {
+            if (car.isSpecial()) {
                 openWay();
                 continue;
             }
@@ -57,7 +57,7 @@ public class RoadController
     private static int calculatePrice(Car car)
     {
         // переменная carHeight типа int
-        int carHeight = car.height;
+        int carHeight = car.getHeight();
         // переменная int типа int
         int price = 0;
         if (carHeight > controllerMaxHeight)
@@ -68,12 +68,12 @@ public class RoadController
         else if (carHeight > passengerCarMaxHeight)
         {
             // переменная weight типа double
-            double weight = car.weight;
+            double weight = car.getWeight();
             //Грузовой автомобиль
             if (weight > passengerCarMaxWeight)
             {
                 price = cargoCarPrice;
-                if (car.hasVehicle) {
+                if (car.hasVehicle()) {
                     price = price + vehicleAdditionalPrice;
                 }
             }
@@ -104,4 +104,6 @@ public class RoadController
     {
         System.out.println("Проезд невозможен: " + reason);
     }
+
+
 }
