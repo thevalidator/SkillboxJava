@@ -12,6 +12,8 @@ public class Cat
     public boolean isAlive;
     private static int count;
 
+    private Color color;
+
     public Cat()
     {
         weight = 1500.0 + 3000.0 * Math.random();
@@ -19,15 +21,28 @@ public class Cat
         isAlive = true;
         count += 1;
         eatenFood = 0;
+        color = Color.getRandom();
+
     }
 
-    public Cat(double weight){
+    public Cat(double weight) {
         this();
         this.weight = weight;
+        this.originWeight = weight;
         isAlive();
         if (!isAlive) {
             System.out.println("Wrong weight, please use ammount between " + MIN_WEIGHT + " and " + MAX_WEIGHT);
         }
+    }
+
+    public Cat (double weight, double originWeight, double eatenFood, Color color) {
+        count += 1;
+        isAlive = true;
+        this.weight = weight;
+        this.originWeight = originWeight;
+        this.eatenFood = eatenFood;
+        this.color = color;
+        isAlive();
     }
 
     public void meow()
@@ -83,6 +98,14 @@ public class Cat
         return weight;
     }
 
+    public double getOriginWeight() {
+        return originWeight;
+    }
+
+/*    public void setOriginWeight(double originWeight) {
+        this.originWeight = originWeight;
+    }*/
+
     public String getStatus()
     {
         if(weight < MIN_WEIGHT) {
@@ -110,4 +133,11 @@ public class Cat
         return count;
     }
 
+    public Color getColor() {
+        return color;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
 }

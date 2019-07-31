@@ -3,6 +3,10 @@ public enum Color {
     WHITE,
     BLACK,
     GREY,
-    MIXED
+    MIXED;
+
+    public static Color getRandom() {
+        return Color.values()[(int) (Math.random() * Color.values().length)];
+    }
 
 }

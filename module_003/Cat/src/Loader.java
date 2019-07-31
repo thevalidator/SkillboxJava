@@ -40,10 +40,33 @@ public class Loader
         }
         System.out.println("status: " + cat5.getStatus());
 
-        System.out.println(cat.getCount());
+        System.out.println("Alive cats: " + cat.getCount());
         System.out.println("status: " + cat1.getStatus());
-        System.out.println(cat.getCount());
+        System.out.println("Alive cats: " + cat.getCount());
         cat5.feed(1000.);
+
+        cat3.feed(150.);
+        Cat cat3Copy = new Cat(cat3.getWeight(), cat3.getOriginWeight(), cat3.getEatenFood(), cat3.getColor());
+        System.out.println("------CAT3 and CAT3 COPY------");
+        System.out.println("cat3     (weight, originWeigth, eatenFood, isAlive, color): " + cat3.getWeight() + ", " + cat3.getOriginWeight() + ", " + cat3.getEatenFood() + ", " + cat3.isAlive + ", " + cat3.getColor());
+        System.out.println("cat3Copy (weight, originWeigth, eatenFood, isAlive, color): " + cat3Copy.getWeight() + ", " + cat3Copy.getOriginWeight() + ", " + cat3Copy.getEatenFood() + ", " + cat3Copy.isAlive + ", " + cat3Copy.getColor());
+        System.out.println("Alive cats: " + cat.getCount());
+
+        System.out.println();
+
+        System.out.println("Cat1 color: " + cat1.getColor());
+        System.out.println("Cat2 color: " + cat2.getColor());
+        System.out.println("Cat3 color: " + cat3.getColor());
+
+        cat1.setColor(Color.RED);
+        cat2.setColor(Color.GREY);
+        cat3.setColor(Color.BLACK);
+        System.out.println();
+
+        System.out.println("Cat1 color: " + cat1.getColor());
+        System.out.println("Cat2 color: " + cat2.getColor());
+        System.out.println("Cat3 color: " + cat3.getColor());
+
 
     }
 }
