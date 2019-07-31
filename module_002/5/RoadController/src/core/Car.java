@@ -9,9 +9,9 @@ public class Car
     // переменная weight типа double
     private double weight;
     // переменная hasVehicle типа boolean
-    private boolean vehicle;
+    private boolean hasVehicle;
     // переменная isSpecial типа boolean
-    private boolean special;
+    private boolean isSpecial;
 
     public String toString()
     {
@@ -47,18 +47,18 @@ public class Car
     }
 
     public boolean hasVehicle() {
-        return vehicle;
+        return hasVehicle;
     }
 
     public void setVehicle(boolean vehicle) {
-        this.vehicle = vehicle;
+        this.hasVehicle = vehicle;
     }
 
     public boolean isSpecial() {
-        return special;
+        return isSpecial;
     }
 
     public void setSpecial(boolean special) {
-        this.special = special;
+        this.isSpecial = special;
     }
 }
