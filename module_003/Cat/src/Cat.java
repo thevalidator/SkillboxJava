@@ -9,82 +9,79 @@ public class Cat
     private final double MAX_WEIGHT = 9000.0;
     private final int CATS_EYE_QTY = 2;
 
-    public boolean isAlive;
     private static int count;
 
     private Color color;
 
     public Cat()
     {
-        weight = 1500.0 + 3000.0 * Math.random();
-        originWeight = weight;
-        isAlive = true;
-        count += 1;
+        weight = (1500.0 + 3000.0 * Math.random());
+        setOriginWeight(getWeight());
+        if (isAlive()) {
+            count += 1;
+        }
         eatenFood = 0;
         color = Color.getRandom();
 
+    }
+
+    public Cat(Cat original) {
+        this();
+        this.weight = original.getWeight();
+        this.originWeight = original.getOriginWeight();
+        this.eatenFood = original.getEatenFood();
+        this.color = original.getColor();
+        if (!isAlive()) {
+            count -= 1;
+        }
     }
 
     public Cat(double weight) {
         this();
         this.weight = weight;
         this.originWeight = weight;
-        isAlive();
-        if (!isAlive) {
+        if (!isAlive()) {
+            count -= 1;
             System.out.println("Wrong weight, please use ammount between " + MIN_WEIGHT + " and " + MAX_WEIGHT);
         }
     }
 
-    public Cat (double weight, double originWeight, double eatenFood, Color color) {
-        count += 1;
-        isAlive = true;
-        this.weight = weight;
-        this.originWeight = originWeight;
-        this.eatenFood = eatenFood;
-        this.color = color;
-        isAlive();
-    }
-
     public void meow()
     {
-        if (isAlive) {
-            weight -= 1;
-            isAlive();
-            System.out.println("Meow");
-        } else {
+        if (!isAlive()) {
             System.out.println(getStatus());
+        } else {
+            setWeight(getWeight() - 1);
+            System.out.println("Meow");
         }
     }
 
     public void goToilet()
     {
-        if (isAlive) {
-            weight -= 0.03 * weight;
-            isAlive();
-            System.out.println("Toilet needs to be cleaned");
-        } else {
+        if (!isAlive()) {
             System.out.println(getStatus());
+        } else {
+            setWeight(getWeight() - 0.03 * weight);
+            System.out.println("Toilet needs to be cleaned");
         }
     }
 
     public void feed(Double amount)
     {
-        if (isAlive) {
-            weight += amount;
-            eatenFood += + amount;
-            isAlive();
-        } else {
+        if (!isAlive()) {
             System.out.println(getStatus());
+        } else {
+            setWeight(getWeight() + amount);
+            setEatenFood(getEatenFood() + amount);
         }
     }
 
     public void drink(Double amount)
     {
-        if (isAlive) {
-            weight += amount;
-            isAlive();
-        } else {
+        if (!isAlive()) {
             System.out.println(getStatus());
+        } else {
+            setWeight(getWeight() + amount);
         }
     }
 
@@ -102,9 +99,22 @@ public class Cat
         return originWeight;
     }
 
-/*    public void setOriginWeight(double originWeight) {
+    public void setOriginWeight(double originWeight) {
         this.originWeight = originWeight;
-    }*/
+    }
+
+    public void setWeight(double weight) {
+        if (isAlive()) {
+            this.weight = weight;
+            if (!isAlive()) {
+                count -= 1;
+            }
+        }
+    }
+
+    public void setEatenFood(double eatenFood) {
+        this.eatenFood = eatenFood;
+    }
 
     public String getStatus()
     {
@@ -122,11 +132,8 @@ public class Cat
         }
     }
 
-    public void isAlive() {
-        if (getWeight() < MIN_WEIGHT || getWeight() > MAX_WEIGHT) {
-            count -= 1;
-            isAlive = false;
-        }
+    public boolean isAlive() {
+        return (getWeight() >= MIN_WEIGHT && getWeight() <= MAX_WEIGHT);
     }
 
     public int getCount() {

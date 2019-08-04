@@ -35,7 +35,7 @@ public class Loader
         Cat cat5 = new Cat();
         System.out.println("\n" + "cat 5:" + "\n" + "=============================");
         System.out.println("weight: " + cat5.getWeight());
-        while (cat5.isAlive) {
+        while (cat5.isAlive()) {
             cat5.meow();
         }
         System.out.println("status: " + cat5.getStatus());
@@ -46,10 +46,10 @@ public class Loader
         cat5.feed(1000.);
 
         cat3.feed(150.);
-        Cat cat3Copy = new Cat(cat3.getWeight(), cat3.getOriginWeight(), cat3.getEatenFood(), cat3.getColor());
+        Cat cat3Copy = new Cat(cat3);
         System.out.println("------CAT3 and CAT3 COPY------");
-        System.out.println("cat3     (weight, originWeigth, eatenFood, isAlive, color): " + cat3.getWeight() + ", " + cat3.getOriginWeight() + ", " + cat3.getEatenFood() + ", " + cat3.isAlive + ", " + cat3.getColor());
-        System.out.println("cat3Copy (weight, originWeigth, eatenFood, isAlive, color): " + cat3Copy.getWeight() + ", " + cat3Copy.getOriginWeight() + ", " + cat3Copy.getEatenFood() + ", " + cat3Copy.isAlive + ", " + cat3Copy.getColor());
+        System.out.println("cat3     (weight, originWeigth, eatenFood, isAlive, color): " + cat3.getWeight() + ", " + cat3.getOriginWeight() + ", " + cat3.getEatenFood() + ", " + cat3.isAlive() + ", " + cat3.getColor());
+        System.out.println("cat3Copy (weight, originWeigth, eatenFood, isAlive, color): " + cat3Copy.getWeight() + ", " + cat3Copy.getOriginWeight() + ", " + cat3Copy.getEatenFood() + ", " + cat3Copy.isAlive() + ", " + cat3Copy.getColor());
         System.out.println("Alive cats: " + cat.getCount());
 
         System.out.println();
