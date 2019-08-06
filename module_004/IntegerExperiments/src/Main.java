@@ -12,10 +12,9 @@ public class Main
     public static Integer sumDigits(Integer number)
     {
         //@TODO: write code here
-        String string = Integer.toString( number);
-        int lenght = string.length();
+        String string = Integer.toString(number);
         int summ = 0;
-        for (int i = 0; i <= (lenght - 1); i++) {
+        for (int i = 0; i < string.length(); i++) {
             char simbol = string.charAt(i);
             summ += Character.getNumericValue(simbol);
         }
