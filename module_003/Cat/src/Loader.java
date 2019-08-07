@@ -66,6 +66,28 @@ public class Loader
         System.out.println("Cat1 color: " + cat1.getColor());
         System.out.println("Cat2 color: " + cat2.getColor());
         System.out.println("Cat3 color: " + cat3.getColor());
+        System.out.println();
+        Cat murzik = new Cat();
+        murzik.feed(200.);
+        Cat murzikClone = murzik.createTwin();
+
+        System.out.println("------murzik and murzik Clone------");
+        System.out.println("murzik      (weight, originWeigth, eatenFood, isAlive, color): " + murzik.getWeight() + ", " + murzik.getOriginWeight() + ", " + murzik.getEatenFood() + ", " + murzik.isAlive() + ", " + murzik.getColor());
+        System.out.println("murzikClone (weight, originWeigth, eatenFood, isAlive, color): " + murzikClone.getWeight() + ", " + murzikClone.getOriginWeight() + ", " + murzikClone.getEatenFood() + ", " + murzikClone.isAlive() + ", " + murzikClone.getColor());
+        System.out.println("Alive cats: " + cat.getCount());
+
+        murzikClone.drink(500.);
+        murzikClone.feed(300.);
+
+        System.out.println();
+        System.out.println("------murzik and murzik Clone------");
+        System.out.println("murzik      (weight, originWeigth, eatenFood, isAlive, color): " + murzik.getWeight() + ", " + murzik.getOriginWeight() + ", " + murzik.getEatenFood() + ", " + murzik.isAlive() + ", " + murzik.getColor());
+        System.out.println("murzikClone (weight, originWeigth, eatenFood, isAlive, color): " + murzikClone.getWeight() + ", " + murzikClone.getOriginWeight() + ", " + murzikClone.getEatenFood() + ", " + murzikClone.isAlive() + ", " + murzikClone.getColor());
+
+
+
+
+
 
 
     }

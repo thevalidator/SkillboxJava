@@ -9,41 +9,38 @@ public class Cat
     private final double MAX_WEIGHT = 9000.0;
     private final int CATS_EYE_QTY = 2;
 
-    private static int count;
+    private static int count = 0;
 
     private Color color;
 
     public Cat()
     {
-        weight = (1500.0 + 3000.0 * Math.random());
-        setOriginWeight(getWeight());
+        this((1500.0 + 3000.0 * Math.random()), 0., 0.,Color.getRandom());
+    }
+
+    public Cat(double weight, double originWeight, double eatenFood, Color color) {
+        this.weight = weight;
+        this.originWeight = originWeight;
+        this.eatenFood = eatenFood;
+        this.color = color;
         if (isAlive()) {
             count += 1;
         }
-        eatenFood = 0;
-        color = Color.getRandom();
-
     }
 
     public Cat(Cat original) {
-        this();
-        this.weight = original.getWeight();
-        this.originWeight = original.getOriginWeight();
-        this.eatenFood = original.getEatenFood();
-        this.color = original.getColor();
-        if (!isAlive()) {
-            count -= 1;
-        }
+        this(original.getWeight(), original.getOriginWeight(), original.getEatenFood(), original.getColor());
     }
 
     public Cat(double weight) {
-        this();
-        this.weight = weight;
-        this.originWeight = weight;
+        this(weight, weight, 0, Color.getRandom());
         if (!isAlive()) {
-            count -= 1;
             System.out.println("Wrong weight, please use ammount between " + MIN_WEIGHT + " and " + MAX_WEIGHT);
         }
+    }
+
+    public Cat createTwin() {
+        return new Cat(getWeight(), getOriginWeight(), getEatenFood(), getColor());
     }
 
     public void meow()
@@ -97,10 +94,6 @@ public class Cat
 
     public double getOriginWeight() {
         return originWeight;
-    }
-
-    public void setOriginWeight(double originWeight) {
-        this.originWeight = originWeight;
     }
 
     public void setWeight(double weight) {
