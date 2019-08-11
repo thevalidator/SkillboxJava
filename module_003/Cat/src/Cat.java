@@ -34,9 +34,6 @@ public class Cat
 
     public Cat(double weight) {
         this(weight, weight, 0, Color.getRandom());
-        if (!isAlive()) {
-            System.out.println("Wrong weight, please use ammount between " + MIN_WEIGHT + " and " + MAX_WEIGHT);
-        }
     }
 
     public Cat createTwin() {
