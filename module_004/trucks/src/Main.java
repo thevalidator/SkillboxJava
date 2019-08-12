@@ -1,42 +1,42 @@
 import java.util.Scanner;
 
 public class Main {
+    private static final int MAX_CONTAINERS_IN_TRUCK = 12;
+    private static final int MAX_BOXES_IN_CONTAINER = 27;
+
     public static void main(String[] args) {
-        int containersInTruck = 12;
-        int boxesInContainer = 27;
         int trucksNeeded = 0;
         int containersNeeded = 0;
 
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter box ammount: ");
         int numberOfBoxes = scanner.nextInt();
-        System.out.println();
-        System.out.println(numberOfBoxes);
 
         // Q-ty of trucks
-        trucksNeeded = (int)(Math.ceil( (double) numberOfBoxes / (containersInTruck * boxesInContainer)));
+        trucksNeeded = (int)(Math.ceil( (double) numberOfBoxes / (MAX_CONTAINERS_IN_TRUCK * MAX_BOXES_IN_CONTAINER)));
         // Q-ty of containers
-        containersNeeded = (int)(Math.ceil( (double) numberOfBoxes / boxesInContainer));
+        containersNeeded = (int)(Math.ceil( (double) numberOfBoxes / MAX_BOXES_IN_CONTAINER));
 
-
-
-        for(int i = 1, k = 1, b = 1; i <= trucksNeeded; i++) {
-            System.out.println("Truck " + i + ":");
-
-            for(int j = k; j <= (k + 11); j++) {
-                if (j <= containersNeeded) {
-                    System.out.println("     Container " + j);
-                } else { break; }
-
-                for(int l = b; l <= (b + 26); l++){
-                    if (l <= numberOfBoxes) {
-                        System.out.println("        Box " + l);
-                    } else { break; }
+        for (int truck = 1; truck <= trucksNeeded; truck++) {
+            System.out.println("Truck " + truck);
+            for (int container = (1 + ((truck - 1) * MAX_CONTAINERS_IN_TRUCK)); container <= (MAX_CONTAINERS_IN_TRUCK * truck); container++) {
+                if (container > containersNeeded) {
+                    break;
+                } else {
+                    System.out.println("   Container " + container);
+                    for (int box = (1 + ((container - 1) * MAX_BOXES_IN_CONTAINER)); box <= (MAX_BOXES_IN_CONTAINER * container); box++) {
+                        if (box > numberOfBoxes) {
+                            break;
+                        } else {
+                            System.out.println("      Box " + box);
+                        }
+                    }
                 }
-                b = j * boxesInContainer + 1;
             }
-            k = i * containersInTruck + 1;
         }
+
+
+
         System.out.println();
         System.out.println("     TOTAL");
         System.out.println("========================");
