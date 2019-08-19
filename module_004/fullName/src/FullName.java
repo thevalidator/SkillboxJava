@@ -5,58 +5,50 @@ public class FullName
     private static Scanner scanner = new Scanner(System.in);
     private static String name;
     private static char spaceChar = ' ';
-    private static String firstName;
-    private static String lastName;
-    private static String middleName;
+
 
     public static void main(String[] args) {
 
-        System.out.print("Enter Full Name: ");
-        name = (scanner.nextLine()).trim();
 
-        setFullName();
+        System.out.print("Enter Full Name (First, Last, Middle): ");
+        askName();
 
-        showFullName();
-
-    }
-
-    public static void setFullName () {
-        while (name.indexOf(spaceChar) == -1) {
-            reEnterFullName();
+        while (!isCorrectName()) {
+            System.out.print("Error, please enter the correct name: ");
+            askName();
         }
-        setFistName();
-        setMiddleName();
-        setLAstName();
-        while ( (lastName.indexOf(spaceChar) != -1) || ( lastName.length() == 0 ) ) {
-            reEnterFullName();
-            setFistName();
-            setMiddleName();
-            setLAstName();
-        }
-    }
 
-    private static void setFistName() {
-        firstName = name.substring(0, name.indexOf(spaceChar));
-    }
-
-    private static void setMiddleName() {
-        middleName = (name.substring(name.lastIndexOf(spaceChar))).trim();
-    }
-
-    private static void setLAstName() {
-        lastName = (name.substring((firstName.length()), (name.length() - middleName.length()))).trim();
+        System.out.println("Last name: " + getLAstName());
+        System.out.println("First name: " + getFistName());
+        System.out.println("Middle name: " + getMiddleName());
 
     }
 
-    private static void reEnterFullName() {
-        System.out.print("Error, please enter correct name again: ");
+    public static void askName() {
         name = (scanner.nextLine()).trim();
     }
 
-    public static void showFullName() {
-        System.out.println(" First Name: " + firstName);
-        System.out.println("  Last Name: " + lastName);
-        System.out.println("Middle Name: " + middleName);
+    private static boolean isCorrectName() {
+        if (name.indexOf(spaceChar) == -1) {
+            return false;
+        }
+        if ((getLAstName().indexOf(spaceChar) != -1) || ( getLAstName().length() == 0 )) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    private static String getFistName() {
+        return (name.substring(0, name.indexOf(spaceChar)));
+    }
+
+    private static String getMiddleName() {
+        return ((name.substring(name.lastIndexOf(spaceChar))).trim());
+    }
+
+    private static String getLAstName() {
+        return ((name.substring((getFistName().length()), (name.length() - getMiddleName().length()))).trim());
     }
 
 
