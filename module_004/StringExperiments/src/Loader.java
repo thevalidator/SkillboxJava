@@ -1,3 +1,5 @@
+import java.util.regex.Pattern;
+
 public class Loader {
     public static void main(String[] args) {
         String text = "Вася заработал 5000 рублей, Петя - 7563 рубля, а Маша - 30000 рублей";
@@ -5,6 +7,15 @@ public class Loader {
 
         int totalSalary = 0;
 
+        var match = Pattern.compile("(?<salary>\\d+)").matcher(text);
+        while (match.find()) {
+            totalSalary += Integer.parseInt(match.group("salary"));
+        }
+
+        System.out.println(totalSalary);
+
+
+        /*
         String[] textInParts = text.split("\\,\\s+");
 
         for (int part = 0; part < textInParts.length; part++) {
@@ -12,6 +23,7 @@ public class Loader {
         }
 
         System.out.println("Суммарный заработок ребят составил " + totalSalary + " рублей.");
+        */
 
         /*
         // indexOf() возвращает индекс символа или набора символов в тексте (''/""/ '', index/ "", index)

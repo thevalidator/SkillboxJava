@@ -13,13 +13,6 @@ public class FullName
         System.out.print("Enter Full Name (First, Last, Middle): ");
         name = askName();
 
-        /*
-        while (!isCorrectName(name)) {
-            System.out.print("Error, please enter the correct name: ");
-            name = askName();
-        }
-        */
-
         System.out.println("Last name: " + getLAstName(name));
         System.out.println("First name: " + getFistName(name));
         System.out.println("Middle name: " + getMiddleName(name));
@@ -27,7 +20,6 @@ public class FullName
     }
 
     public static String askName() {
-        //return (scanner.nextLine()).trim();
         String name = (scanner.nextLine()).trim();
         while (!isCorrectName(name)) {
             System.out.print("Error, please enter the correct name: ");

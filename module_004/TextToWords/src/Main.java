@@ -18,9 +18,9 @@ public class Main {
                 " structure, selection, coordination, expression, \"look and feel\" and arrangement of" +
                 " such Content, contained on the Site is owned, controlled or licensed by or to" +
                 " Apple, and is protected by trade dress, copyright, patent and trademark laws, " +
-                "and various other intellectual property rights and unfair competition laws.";
+                "and various other intellectual property rights;and:unfair,competition,la-ws.";
 
-        String words[] = someText.replaceAll("[^\\w][^-\\w]", " ").split("\\s+");
+        String words[] = someText.replaceAll("([^\\w][^-\\w])", " ").split("\\s+|\\.|\\,|\\;|\\:");
 
         for ( int i = 0; i < words.length; i++ ) {
             System.out.println(words[i]);
