@@ -20,7 +20,7 @@ public class Main {
                 " Apple, and is protected by trade dress, copyright, patent and trademark laws, " +
                 "and various other intellectual property rights;and:unfair,competition,la-ws.";
 
-        String words[] = someText.replaceAll("([^\\w][^-\\w])", " ").split("\\s+|\\.|\\,|\\;|\\:");
+        String words[] = someText.replaceAll("([^\\w][^-\\w])", " ").split("[\\s.,;:]+");
 
         for ( int i = 0; i < words.length; i++ ) {
             System.out.println(words[i]);

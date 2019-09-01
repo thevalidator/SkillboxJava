@@ -8,15 +8,12 @@ public class FullName
     public static void main(String[] args) {
         String name = "empty empty empty";
 
-        System.out.println("First name: " + getFistName(name));
-
         System.out.print("Enter Full Name (First, Last, Middle): ");
         name = askName();
 
         System.out.println("Last name: " + getLAstName(name));
         System.out.println("First name: " + getFistName(name));
         System.out.println("Middle name: " + getMiddleName(name));
-
     }
 
     public static String askName() {
