@@ -1,7 +1,10 @@
+import javax.swing.text.MaskFormatter;
+import java.text.ParseException;
 import java.util.Scanner;
 
 public class Loader {
     private static Scanner scanner = new Scanner(System.in);
+    private static final int MIN_LENGTH = 11;
 
     public static void main(String[] args) {
 
@@ -9,6 +12,8 @@ public class Loader {
         String number = scanner.nextLine().trim().replaceAll("[^0-9]", "");
 
         showFormattedNumber(number);
+
+        System.out.println(formatTwo(number));
 
     }
 
@@ -21,6 +26,24 @@ public class Loader {
         String thirdSection = number.substring(number.length() - 2);
         System.out.println(countryCodeSection + spacer + codeSection + spacer + firstSection + spacer + secondSection
                 + spacer + thirdSection);
+    }
+
+    public static String formatTwo(String phoneNum) {
+        String phoneMask;
+        if (phoneNum.length() == MIN_LENGTH) {
+            phoneMask = "+# ### ###-##-##";
+        } else {
+            phoneMask = "+## ### ###-##-##";
+        }
+        MaskFormatter maskFormatter = null;
+        try {
+            maskFormatter = new MaskFormatter(phoneMask);
+            maskFormatter.setValueContainsLiteralCharacters(false);
+            phoneNum = maskFormatter.valueToString(phoneNum);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return phoneNum;
     }
 
 }
