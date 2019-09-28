@@ -1,48 +1,56 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Loader {
+
     private static Scanner scanner = new Scanner(System.in);
     private static ArrayList<String> toDoList = new ArrayList<>();
 
     public static void main(String[] args) {
 
-        String[] command;
-
         do {
-            command = getCommand();
-            if (command[0].equalsIgnoreCase("exit")) {
+            System.out.print("Enter command: ");
+            String input = scanner.nextLine().trim();
+
+            Matcher exit = Pattern.compile("^exit").matcher(input);
+            Matcher list = Pattern.compile("^list").matcher(input);
+            Matcher add = Pattern.compile("^add (?<deal>.+)").matcher(input);
+            Matcher addIndexed = Pattern.compile("(^add) (?<num>\\d+) (?<deal>.+)").matcher(input);
+            Matcher edit = Pattern.compile("(^edit) (?<num>\\d+) (?<deal>.+)").matcher(input);
+            Matcher delete = Pattern.compile("(^delete) (?<num>\\d+)").matcher(input);
+
+            if (exit.matches()) {
                 break;
-            }
-            else if (command[0].equalsIgnoreCase("list")) {
+            } else if (addIndexed.matches()) {
+                System.out.println("addIND!");
+                addTaskIndexed(toDoList, getIndex(addIndexed), getDeal(addIndexed));
+            } else if (add.matches()) {
+                addTask(toDoList, getDeal(add));
+            } else if (list.matches()) {
                 showList(toDoList);
-            }
-            else if (command[0].equalsIgnoreCase("add")) {
-                if (command[1].matches("[0-9]+")) {
-                    addTask(toDoList, Integer.parseInt(command[1]), command[2]);
-                } else {
-                    addTask(toDoList, command [1]);
-                }
-            }
-            else if (command[0].equalsIgnoreCase("edit")) {
-                editTask(toDoList, Integer.parseInt(command[1]), command[2]);
-            }
-            else if (command[0].equalsIgnoreCase("delete")) {
-                deleteTask(toDoList, Integer.parseInt(command[1]));
-            }
-            else {
-                System.out.println("*** wrong request! ***");
+            } else if (delete.matches()) {
+                deleteTask(toDoList, getIndex(delete));
+            } else if (edit.matches()) {
+                editTask(toDoList, getIndex(edit), getDeal(edit));
+            } else {
+                System.out.println("Invalid command");
             }
         } while (true);
 
+
     }
 
-    public static String[] getCommand() {
-            System.out.print("Enter command: ");
-        return scanner.nextLine().trim().split("\\s+");
+    static int getIndex(Matcher m) {
+        return Integer.parseInt(m.group("num"));
     }
 
-    private static void addTask(ArrayList<String> listName, int index, String task)  {
+    static String getDeal(Matcher m) {
+        return m.group("deal");
+    }
+
+    private static void addTaskIndexed(ArrayList<String> listName, int index, String task)  {
         if (index > (listName.size() - 1)) {
             listName.add(task);
         } else {
@@ -55,7 +63,11 @@ public class Loader {
     }
 
     private static void deleteTask(ArrayList<String> listName, int index) {
-        listName.remove(index);
+        if (index > (listName.size() - 1)) {
+            System.out.println("Error, no task with number " + index);
+        } else {
+            listName.remove(index);
+        }
     }
 
     private static void editTask(ArrayList<String> listName, int index, String task) {
