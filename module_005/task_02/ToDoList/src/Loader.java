@@ -5,10 +5,21 @@ import java.util.regex.Pattern;
 
 public class Loader {
 
-    private static Scanner scanner = new Scanner(System.in);
-    private static ArrayList<String> toDoList = new ArrayList<>();
+    //private static Scanner scanner = new Scanner(System.in);
+    //private static ArrayList<String> toDoList = new ArrayList<>();
 
     public static void main(String[] args) {
+
+        ArrayList<String> toDoList = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Manual:");
+        System.out.println("1) For exit type: exit");
+        System.out.println("2) To see the list type: list");
+        System.out.println("3) To add new task type: add task_text / add № task_text");
+        System.out.println("4) To edit task type: edit № new_text");
+        System.out.println("5) To delete task type: delete №");
+        System.out.println();
 
         do {
             System.out.print("Enter command: ");
@@ -24,7 +35,6 @@ public class Loader {
             if (exit.matches()) {
                 break;
             } else if (addIndexed.matches()) {
-                System.out.println("addIND!");
                 addTaskIndexed(toDoList, getIndex(addIndexed), getDeal(addIndexed));
             } else if (add.matches()) {
                 addTask(toDoList, getDeal(add));
