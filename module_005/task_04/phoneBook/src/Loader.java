@@ -23,11 +23,11 @@ public class Loader {
             String input = scanner.nextLine();
             if(input.equals("stop")) {
                 break;
-            } else if(input.equals("list")) {
+            } else if (input.equals("list")) {
                 showList();
-            } else if((containsName(input) && containsNumber(phoneBook.get(input)))) {
+            } else if ((containsName(input) && containsNumber(phoneBook.get(input)))) {
                 System.out.println("found ==> " + input + " : " + phoneBook.get(input));
-            } else if((containsNumber(input)) && containsName(getKey( input))) {
+            } else if ((containsNumber(input)) && containsName(getKey( input))) {
                 System.out.println("found ==> " + getKey(input) + " : " + input);
             } else {
                 if (isName(input)) {
@@ -43,11 +43,7 @@ public class Loader {
 
     private static boolean isName(String input) {
         Matcher name = Pattern.compile(".+[a-zA-Z]+.+").matcher(input);
-        if(name.matches()) {
-            return true;
-        } else {
-            return false;
-        }
+        return name.matches();
     }
 
     private static String formatNumber(String number) {
