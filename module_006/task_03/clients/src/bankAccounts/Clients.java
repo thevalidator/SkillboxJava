@@ -3,12 +3,9 @@ package bankAccounts;
 public abstract class Clients {
 
     private double balance;
-    private double cashInTotal;
-    private double cashOutTotal;
 
     Clients(double balance) {
         this.balance = balance;
-        setCashInTotal(balance);
     }
 
     public double getBalance() {
@@ -16,23 +13,11 @@ public abstract class Clients {
     }
 
     protected void setBalance(double balance) {
-        this.balance = balance;
-    }
-
-    public double getCashInTotal() {
-        return cashInTotal;
-    }
-
-    protected void setCashInTotal(double amount) {
-        cashInTotal = amount;
-    }
-
-    public double getCashOutTotal() {
-        return cashOutTotal;
-    }
-
-    protected void setCashOutTotal(double amount) {
-        cashOutTotal = amount;
+        if (balance > 0) {
+            this.balance = balance;
+        } else {
+            System.out.println("The balance can't be negative");
+        }
     }
 
     public abstract void cashIn(double amount);

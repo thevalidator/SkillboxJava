@@ -1,58 +1,32 @@
 package Accounts;
 
-import java.time.LocalDate;
-
 public class MainAccount {
 
-    private double ammount = 0.;
-    private LocalDate dateOfCreation = LocalDate.now();;
-    private double cashOutTotal = 0.;
-    private double cashInTotal = 0.;
+    private double amount = 0.;
 
-
-    public MainAccount(double ammount) {
-        setAmmount(ammount);
+    public MainAccount(double amount) {
+        setAmount(amount);
     }
 
-    public double getAmmount() {
-        return ammount;
+    public double getAmount() {
+        return amount;
     }
 
-    protected void setAmmount(double ammount) {
-        this.ammount = ammount;
+    protected void setAmount(double amount) {
+        if (amount > 0) {
+            this.amount = amount;
+        } else {
+            System.out.println("The balance can't be negative");
+        }
     }
 
-    public void cashOut(double ammount) {
-        setCashOutTotal(getCashOutTotal() - ammount);
-        setAmmount(getAmmount() - ammount);
+    public void cashOut(double amount) {
+        setAmount(getAmount() - amount);
     }
 
-    public double getCashOutTotal() {
-        return cashOutTotal;
+    public void cashIn(double amount) {
+        setAmount(getAmount() + amount);
     }
 
-    protected void setCashOutTotal(double cashOutTotal) {
-        this.cashOutTotal = cashOutTotal;
-    }
 
-    public void cashIn(double ammount) {
-        setCashInTotal(getCashInTotal() + ammount);
-        setAmmount(getAmmount() + ammount);
-    }
-
-    public double getCashInTotal() {
-        return cashInTotal;
-    }
-
-    protected void setCashInTotal(double cashInTotal) {
-        this.cashInTotal = cashInTotal;
-    }
-
-    public void setDateOfCreation(int day, int month, int year) {
-        dateOfCreation = LocalDate.of(year,month,day);
-    }
-
-    public LocalDate getDateOfCreation() {
-        return dateOfCreation;
-    }
 }

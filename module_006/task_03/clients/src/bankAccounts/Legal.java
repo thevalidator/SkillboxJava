@@ -12,12 +12,10 @@ public class Legal extends Clients {
     @Override
     public void cashIn(double amount) {
         setBalance(getBalance() + amount);
-        setCashInTotal(getCashInTotal() + amount);
     }
 
     @Override
     public void cashOut(double amount) {
         setBalance(getBalance() - amount * fee);
-        setCashOutTotal(getCashOutTotal() - amount);
     }
 }

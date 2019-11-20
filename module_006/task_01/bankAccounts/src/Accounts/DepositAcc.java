@@ -4,29 +4,31 @@ import java.time.LocalDate;
 
 public class DepositAcc extends MainAccount {
 
-    private LocalDate lastCashInDate = getDateOfCreation();
 
-    public DepositAcc(double ammount) {
-        super(ammount);
+    private LocalDate lastCashInDate = LocalDate.now();
+
+    public DepositAcc(double amount) {
+        super(amount);
     }
 
-    public void cashIn(double ammount) {
-        setCashInTotal(getCashOutTotal() + ammount);
-        setAmmount(getAmmount() + ammount);
+    @Override
+    public void cashIn(double amount) {
+        setAmount(getAmount() + amount);
         lastCashInDate = LocalDate.now();
     }
 
-    public void setLastCashInDate(int day, int month, int year) {
-        lastCashInDate = LocalDate.of(year,month,day);
-    }
-
-    public void cashOut(double ammount) {
+    @Override
+    public void cashOut(double amount) {
         if (LocalDate.now().isAfter(lastCashInDate.plusMonths(1))) {
-            setCashOutTotal(getCashOutTotal() - ammount);
-            setAmmount(getAmmount() - ammount);
+            setAmount(getAmount() - amount);
         } else {
             System.out.println("The block period has not expired!");
         }
     }
+
+    public void setLastCashInDate(LocalDate date) {
+        lastCashInDate = date;
+    }
+
 
 }

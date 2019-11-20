@@ -2,14 +2,14 @@ package Accounts;
 
 public class CardsAcc extends MainAccount {
 
-    public CardsAcc(double ammount) {
-        super(ammount);
+
+    public CardsAcc(double amount) {
+        super(amount);
     }
 
-    public void cashOut(double ammount) {
-        setCashOutTotal(getCashOutTotal() - ammount);
-        setAmmount(getAmmount() - (ammount * 1.01));
+    @Override
+    public void cashOut(double amount) {
+        setAmount(getAmount() - (amount * 1.01));
     }
-
 
 }
