@@ -18,7 +18,7 @@ public class MainAccount {
         return ammount;
     }
 
-    public void setAmmount(double ammount) {
+    protected void setAmmount(double ammount) {
         this.ammount = ammount;
     }
 
