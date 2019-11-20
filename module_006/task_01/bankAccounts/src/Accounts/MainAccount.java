@@ -23,7 +23,7 @@ public class MainAccount {
     }
 
     public void cashOut(double ammount) {
-        cashOutTotal -= ammount;
+        setCashOutTotal(getCashOutTotal() - ammount);
         setAmmount(getAmmount() - ammount);
     }
 
@@ -31,13 +31,21 @@ public class MainAccount {
         return cashOutTotal;
     }
 
+    public void setCashOutTotal(double cashOutTotal) {
+        this.cashOutTotal = cashOutTotal;
+    }
+
     public void cashIn(double ammount) {
-        cashInTotal += ammount;
+        setCashInTotal(getCashInTotal() + ammount);
         setAmmount(getAmmount() + ammount);
     }
 
     public double getCashInTotal() {
         return cashInTotal;
+    }
+
+    public void setCashInTotal(double cashInTotal) {
+        this.cashInTotal = cashInTotal;
     }
 
     public void setDateOfCreation(int day, int month, int year) {

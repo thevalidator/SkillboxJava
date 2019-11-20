@@ -11,7 +11,7 @@ public class DepositAcc extends MainAccount {
     }
 
     public void cashIn(double ammount) {
-//        cashInTotal += ammount;
+        setCashInTotal(getCashOutTotal() + ammount);
         setAmmount(getAmmount() + ammount);
         lastCashInDate = LocalDate.now();
     }
@@ -22,7 +22,7 @@ public class DepositAcc extends MainAccount {
 
     public void cashOut(double ammount) {
         if (LocalDate.now().isAfter(lastCashInDate.plusMonths(1))) {
-//            cashOutTotal -= ammount;
+            setCashOutTotal(getCashOutTotal() - ammount);
             setAmmount(getAmmount() - ammount);
         } else {
             System.out.println("The block period has not expired!");
