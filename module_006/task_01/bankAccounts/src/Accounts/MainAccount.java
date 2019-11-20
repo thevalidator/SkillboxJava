@@ -31,7 +31,7 @@ public class MainAccount {
         return cashOutTotal;
     }
 
-    public void setCashOutTotal(double cashOutTotal) {
+    protected void setCashOutTotal(double cashOutTotal) {
         this.cashOutTotal = cashOutTotal;
     }
 
@@ -44,7 +44,7 @@ public class MainAccount {
         return cashInTotal;
     }
 
-    public void setCashInTotal(double cashInTotal) {
+    protected void setCashInTotal(double cashInTotal) {
         this.cashInTotal = cashInTotal;
     }
 

@@ -1,4 +1,4 @@
-import Accounts.CarsAcc;
+import Accounts.CardsAcc;
 import Accounts.DepositAcc;
 import Accounts.MainAccount;
 
@@ -25,7 +25,7 @@ public class Main {
         System.out.println(depositVasya.getAmmount());
 
 
-        CarsAcc cardVasya = new CarsAcc(35000.);
+        CardsAcc cardVasya = new CardsAcc(35000.);
         cardVasya.cashOut(30000.);
         System.out.println(cardVasya.getAmmount());
 
