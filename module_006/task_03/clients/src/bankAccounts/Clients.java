@@ -20,8 +20,13 @@ public abstract class Clients {
         }
     }
 
-    public abstract void cashIn(double amount);
-    public abstract void cashOut(double amount);
+    public void cashIn(double amount) {
+        setBalance(getBalance() + amount);
+    }
+
+    public void cashOut(double amount) {
+        setBalance(getBalance() - amount);
+    }
 
 
 }

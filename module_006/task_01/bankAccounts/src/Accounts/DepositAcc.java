@@ -13,14 +13,14 @@ public class DepositAcc extends MainAccount {
 
     @Override
     public void cashIn(double amount) {
-        setAmount(getAmount() + amount);
+        super.cashIn(amount);
         lastCashInDate = LocalDate.now();
     }
 
     @Override
     public void cashOut(double amount) {
         if (LocalDate.now().isAfter(lastCashInDate.plusMonths(1))) {
-            setAmount(getAmount() - amount);
+            super.cashOut(amount);
         } else {
             System.out.println("The block period has not expired!");
         }

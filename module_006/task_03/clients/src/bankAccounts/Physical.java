@@ -7,13 +7,4 @@ public class Physical extends Clients {
         super(balance);
     }
 
-    @Override
-    public void cashIn(double amount) {
-        setBalance(getBalance() + amount);
-    }
-
-    @Override
-    public void cashOut(double amount) {
-        setBalance(getBalance() - amount);
-    }
 }

@@ -3,9 +3,9 @@ package bankAccounts;
 public class Individual extends Clients {
 
 
-    private double feeGradeMarker = 1000.;
-    private double feeGradeHigh = 0.99;
-    private double feeGradeLow = 0.995;
+    private static final double FEE_GRADE_MARKER = 1000.;
+    private static final double FEE_GRADE_HIGH = 0.99;
+    private static final double FEE_GRADE_LOW = 0.995;
 
     public Individual(double balance) {
         super(balance);
@@ -13,15 +13,11 @@ public class Individual extends Clients {
 
     @Override
     public void cashIn(double amount) {
-        if (amount >= feeGradeMarker) {
-            setBalance(getBalance() + amount * feeGradeLow);
+        if (amount >= FEE_GRADE_MARKER) {
+            setBalance(getBalance() + amount * FEE_GRADE_LOW);
         } else {
-            setBalance(getBalance() + amount * feeGradeHigh);
+            setBalance(getBalance() + amount * FEE_GRADE_HIGH);
         }
     }
 
-    @Override
-    public void cashOut(double amount) {
-        setBalance(getBalance() - amount);
-    }
 }
