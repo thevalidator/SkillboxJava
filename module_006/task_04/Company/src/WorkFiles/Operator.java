@@ -3,8 +3,8 @@ package WorkFiles;
 public class Operator implements Employee {
 
     private double fixedSalary;
-    private final static double SALARY_GRADE_INTERN = 0.7;
-    private final static double SALARY_GRADE_ONE = 1.1;
+    private static final double SALARY_GRADE_INTERN = 0.7;
+    private static final double SALARY_GRADE_ONE = 1.1;
     private static final double SALARY_GRADE_TWO = 1.2;
 
     public Operator() {
@@ -23,7 +23,7 @@ public class Operator implements Employee {
     }
 
     @Override
-    public double getMonthSalary(double companyIncome, double companyIncomeGoal) {
+    public double getMonthSalary(Company company) {
         return fixedSalary;
     }
 

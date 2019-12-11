@@ -21,8 +21,8 @@ public class Manager implements Employee {
     }
 
     @Override
-    public double getMonthSalary(double companyIncome, double companyIncomeGoal) {
-        return fixedSalary + companyIncome * 0.05;
+    public double getMonthSalary(Company company) {
+        return fixedSalary + company.getCompanyIncome() * 0.05;
     }
 
     @Override

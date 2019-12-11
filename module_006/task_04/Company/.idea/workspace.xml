@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="9cbacb47-812d-4739-904c-0cda98f7c330" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/out/production/Company/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Company/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Company/WorkFiles/Company$SalaryComparator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Company/WorkFiles/Company$SalaryComparator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Company/WorkFiles/Company.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Company/WorkFiles/Company.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Company/WorkFiles/Employee.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Company/WorkFiles/Employee.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Company/WorkFiles/Manager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Company/WorkFiles/Manager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Company/WorkFiles/Operator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Company/WorkFiles/Operator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Company/WorkFiles/TopManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Company/WorkFiles/TopManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WorkFiles/Company.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WorkFiles/Company.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WorkFiles/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WorkFiles/Employee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WorkFiles/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WorkFiles/Manager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WorkFiles/Operator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WorkFiles/Operator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WorkFiles/TopManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WorkFiles/TopManager.java" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="ProjectId" id="1TvBpy2SaVzyZHEEQunp0mHAKaq" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="Company" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9cbacb47-812d-4739-904c-0cda98f7c330" name="Default Changelist" comment="" />
+      <created>1574330875719</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1574330875719</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

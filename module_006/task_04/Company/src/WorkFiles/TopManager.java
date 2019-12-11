@@ -25,8 +25,8 @@ public class TopManager implements Employee {
     }
 
     @Override
-    public double getMonthSalary(double companyIncome, double companyIncomeGoal) {
-        if (companyIncome > companyIncomeGoal) {
+    public double getMonthSalary(Company company) {
+        if (company.getCompanyIncome() > company.getCompanyIncomeGoal()) {
             return fixedSalary + fixedSalary * 1.5;
         } else {
             return fixedSalary;
