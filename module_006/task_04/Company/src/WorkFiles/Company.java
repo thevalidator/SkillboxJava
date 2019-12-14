@@ -5,37 +5,37 @@ import java.util.Collections;
 import java.util.Comparator;
 
 public class Company {
-    public ArrayList<Employee> EmployeeList;
+    public ArrayList<Employee> employeeList;
     private double companyIncomeGoal;
 
     public Company() {
-        EmployeeList = new ArrayList<>();
+        employeeList = new ArrayList<>();
         companyIncomeGoal = 3000000;
     }
 
     public void hire(Employee position) {
-        EmployeeList.add(position);
+        employeeList.add(position);
     }
 
     public void hireAll() {
         for (int topManager = 1; topManager <= 10; topManager++) {
-            EmployeeList.add(new TopManager());
+            employeeList.add(new TopManager());
         }
         for (int manager = 1; manager <= 80; manager++) {
-            EmployeeList.add(new Manager());
+            employeeList.add(new Manager());
         }
         for (int operator = 1; operator <= 180; operator++) {
-            EmployeeList.add(new Operator());
+            employeeList.add(new Operator());
         }
     }
 
     public void fire(int index) {
-        EmployeeList.remove(index);
+        employeeList.remove(index);
     }
 
     public double getCompanyIncome() {
         double income = 0;
-        for (Employee e : EmployeeList) {
+        for (Employee e : employeeList) {
             income += e.getSalesAmount();
         }
         return income;
@@ -50,27 +50,27 @@ public class Company {
     }
 
     public void getTopSalaryStaff(int count) {
-        if (count >= EmployeeList.size() || count < 0) {
-            System.out.println("Error, the number can't be more than " + EmployeeList.size() + " and less than zero.");
+        if (count >= employeeList.size() || count < 0) {
+            System.out.println("Error, the number can't be more than " + employeeList.size() + " and less than zero.");
         } else {
             SalaryComparator salaryComparator = new SalaryComparator(this);
-            EmployeeList.sort(Collections.reverseOrder(salaryComparator));
+            employeeList.sort(Collections.reverseOrder(salaryComparator));
             System.out.println("TOP HIGHEST " + count + " SALARIES");
             for (int i = 0; i < count; i++) {
-                System.out.println((i + 1) + ". " + EmployeeList.get(i).getMonthSalary(this));
+                System.out.println((i + 1) + ". " + employeeList.get(i).getMonthSalary(this));
             }
         }
     }
 
     public void getLowSalaryStaff(int count) {
-        if (count >= EmployeeList.size()) {
-            System.out.println("Error, the number can't be more than " + EmployeeList.size() + " at the moment.");
+        if (count >= employeeList.size()) {
+            System.out.println("Error, the number can't be more than " + employeeList.size() + " at the moment.");
         } else {
             SalaryComparator salaryComparator = new SalaryComparator(this);
-            EmployeeList.sort(salaryComparator);
+            employeeList.sort(salaryComparator);
             System.out.println("TOP LOWEST " + count + " SALARIES");
             for (int i = 0; i < count; i++) {
-                System.out.println((i + 1) + ". " + EmployeeList.get(i).getMonthSalary(this));
+                System.out.println((i + 1) + ". " + employeeList.get(i).getMonthSalary(this));
             }
         }
     }

@@ -23,7 +23,7 @@ public class Main {
             }
         }
 
-        GazProm.fire((int) (Math.random() * GazProm.EmployeeList.size()));
+        GazProm.fire((int) (Math.random() * GazProm.employeeList.size()));
 
         CocaCola.hireAll();
         GazProm.hireAll();
