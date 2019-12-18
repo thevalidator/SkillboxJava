@@ -53,7 +53,7 @@ public class Company {
         if (count >= employeeList.size() || count < 0) {
             System.out.println("Error, the number can't be more than " + employeeList.size() + " and less than zero.");
         } else {
-            SalaryComparator salaryComparator = new SalaryComparator(this);
+            SalaryComparator salaryComparator = new SalaryComparator();
             employeeList.sort(Collections.reverseOrder(salaryComparator));
             System.out.println("TOP HIGHEST " + count + " SALARIES");
             for (int i = 0; i < count; i++) {
@@ -66,7 +66,7 @@ public class Company {
         if (count >= employeeList.size()) {
             System.out.println("Error, the number can't be more than " + employeeList.size() + " at the moment.");
         } else {
-            SalaryComparator salaryComparator = new SalaryComparator(this);
+            SalaryComparator salaryComparator = new SalaryComparator();
             employeeList.sort(salaryComparator);
             System.out.println("TOP LOWEST " + count + " SALARIES");
             for (int i = 0; i < count; i++) {
@@ -78,21 +78,10 @@ public class Company {
 
     public class SalaryComparator implements Comparator<Employee> {
 
-        private Company company;
-
-        public SalaryComparator(Company company) {
-            this.company = company;
-        }
         @Override
         public int compare(Employee one, Employee another) {
-            if (one.getMonthSalary(company) == another.getMonthSalary(company)) {
-                return 0;
-            }
-            if (one.getMonthSalary(company) > another.getMonthSalary(company)) {
-                return 1;
-            } else {
-                return -1;
-            }
+            Company company = Company.this;
+            return Double.compare(one.getMonthSalary(company), another.getMonthSalary(company));
         }
     }
 }

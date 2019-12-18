@@ -35,5 +35,8 @@ public class Main {
         GazProm.getTopSalaryStaff(number);
         GazProm.getLowSalaryStaff(number);
 
+        System.out.println(0.3 == 0.1 + 0.2);
+        System.out.println(Double.compare(0.3, (0.1 + 0.2)));
+
     }
 }

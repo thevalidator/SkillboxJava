@@ -3,7 +3,6 @@ package WorkFiles;
 public class TopManager implements Employee {
 
     private double fixedSalary = 300000.;
-    private double salesAmount;
     private static final double SALARY_GRADE_ONE = 1.05;
     private static final double SALARY_GRADE_TWO = 1.1;
     private static final double SALARY_GRADE_THREE = 1.2;
@@ -20,8 +19,6 @@ public class TopManager implements Employee {
         if (grade < 0.75 && grade >= 0.5) {
             fixedSalary = fixedSalary * SALARY_GRADE_ONE;
         }
-        //генерация суммы продаж работника в диапазоне от 200.000 до 400.000
-        salesAmount = 400000. * ((int)((Math.random() * 5) + 5)) / 10;
     }
 
     @Override
@@ -35,7 +32,7 @@ public class TopManager implements Employee {
 
     @Override
     public double getSalesAmount() {
-        return salesAmount;
+        return 0;
     }
 }
 
