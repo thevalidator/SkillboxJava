@@ -6,34 +6,34 @@ import WorkFiles.TopManager;
 public class Main {
     public static void main(String[] args) {
 
-        Company CocaCola = new Company();
-        Company GazProm = new Company();
+        Company cocaCola = new Company();
+        Company gazProm = new Company();
 
         for (int i = 1; i < 9; i++) {
             double positionDefinition = Math.random();
             if (positionDefinition < 0.04) {
-                GazProm.hire(new TopManager());
+                gazProm.hire(new TopManager());
                 System.out.println("Welcome, Top Manager!");
             } else if (positionDefinition < 0.70 && positionDefinition >= 0.4) {
-                GazProm.hire(new Operator());
+                gazProm.hire(new Operator());
                 System.out.println("Welcome, Operator!");
             } else {
-                GazProm.hire(new Manager());
+                gazProm.hire(new Manager());
                 System.out.println("Welcome, Manager!");
             }
         }
 
-        GazProm.fire((int) (Math.random() * GazProm.employeeList.size()));
+        gazProm.fire((int) (Math.random() * gazProm.employeeList.size()));
 
-        CocaCola.hireAll();
-        GazProm.hireAll();
+        cocaCola.hireAll();
+        gazProm.hireAll();
 
-        System.out.print((int)GazProm.getCompanyIncome() + "  GazProm | income |  CocaCola  ");
-        System.out.println((int)CocaCola.getCompanyIncome());
+        System.out.print((int)gazProm.getCompanyIncome() + "  gazProm | income |  cocaCola  ");
+        System.out.println((int)cocaCola.getCompanyIncome());
 
         int number = 5;
-        GazProm.getTopSalaryStaff(number);
-        GazProm.getLowSalaryStaff(number);
+        gazProm.getTopSalaryStaff(number);
+        gazProm.getLowSalaryStaff(number);
 
         System.out.println(0.3 == 0.1 + 0.2);
         System.out.println(Double.compare(0.3, (0.1 + 0.2)));
