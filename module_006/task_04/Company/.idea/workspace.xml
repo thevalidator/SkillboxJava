@@ -3,17 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="9cbacb47-812d-4739-904c-0cda98f7c330" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Company/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Company/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Company/WorkFiles/Company$SalaryComparator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Company/WorkFiles/Company$SalaryComparator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Company/WorkFiles/Company.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Company/WorkFiles/Company.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WorkFiles/Company.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WorkFiles/Company.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../companyAbstract/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../companyAbstract/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../companyAbstract/src/Workfiles/Company.java" beforeDir="false" afterPath="$PROJECT_DIR$/../companyAbstract/src/Workfiles/Company.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../companyAbstract/src/Workfiles/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/../companyAbstract/src/Workfiles/Employee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../companyAbstract/src/Workfiles/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../companyAbstract/src/Workfiles/Manager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../companyAbstract/src/Workfiles/Operator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../companyAbstract/src/Workfiles/Operator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../companyAbstract/src/Workfiles/TopManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../companyAbstract/src/Workfiles/TopManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,29 +91,29 @@
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="93" y="93" width="1095" height="504" key="DiffContextDialog/0.0.1280.689@0.0.1280.689" timestamp="1576696583459" />
-    <state width="1237" height="130" key="GridCell.Tab.0.bottom" timestamp="1576878896489">
+    <state width="1237" height="130" key="GridCell.Tab.0.bottom" timestamp="1577185944251">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1237" height="130" key="GridCell.Tab.0.bottom/0.0.1280.689@0.0.1280.689" timestamp="1576878896489" />
-    <state width="1237" height="130" key="GridCell.Tab.0.center" timestamp="1576878896489">
+    <state width="1237" height="130" key="GridCell.Tab.0.bottom/0.0.1280.689@0.0.1280.689" timestamp="1577185944251" />
+    <state width="1237" height="130" key="GridCell.Tab.0.center" timestamp="1577185944251">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1237" height="130" key="GridCell.Tab.0.center/0.0.1280.689@0.0.1280.689" timestamp="1576878896489" />
-    <state width="1237" height="130" key="GridCell.Tab.0.left" timestamp="1576878896489">
+    <state width="1237" height="130" key="GridCell.Tab.0.center/0.0.1280.689@0.0.1280.689" timestamp="1577185944251" />
+    <state width="1237" height="130" key="GridCell.Tab.0.left" timestamp="1577185944251">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1237" height="130" key="GridCell.Tab.0.left/0.0.1280.689@0.0.1280.689" timestamp="1576878896489" />
-    <state width="1237" height="130" key="GridCell.Tab.0.right" timestamp="1576878896489">
+    <state width="1237" height="130" key="GridCell.Tab.0.left/0.0.1280.689@0.0.1280.689" timestamp="1577185944251" />
+    <state width="1237" height="130" key="GridCell.Tab.0.right" timestamp="1577185944251">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1237" height="130" key="GridCell.Tab.0.right/0.0.1280.689@0.0.1280.689" timestamp="1576878896489" />
-    <state x="337" y="169" key="com.intellij.ide.util.TipDialog" timestamp="1576857301238">
+    <state width="1237" height="130" key="GridCell.Tab.0.right/0.0.1280.689@0.0.1280.689" timestamp="1577185944251" />
+    <state x="337" y="169" key="com.intellij.ide.util.TipDialog" timestamp="1577189923597">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state x="337" y="169" key="com.intellij.ide.util.TipDialog/0.0.1280.689@0.0.1280.689" timestamp="1576857301238" />
-    <state x="91" y="0" key="new project wizard" timestamp="1576857336344">
+    <state x="337" y="169" key="com.intellij.ide.util.TipDialog/0.0.1280.689@0.0.1280.689" timestamp="1577189923597" />
+    <state x="91" y="0" key="new project wizard" timestamp="1577197603594">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state x="91" y="0" key="new project wizard/0.0.1280.689@0.0.1280.689" timestamp="1576857336344" />
+    <state x="91" y="0" key="new project wizard/0.0.1280.689@0.0.1280.689" timestamp="1577197603594" />
   </component>
 </project>
