@@ -2,9 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="baabd658-2e59-4748-887f-1bdd396c992b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../module_006/task_04/Company/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../module_006/task_04/Company/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../airport/.idea/libraries/airport_1_0_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../airport/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../airport/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../airport/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../airport/airport.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../airport/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../module_003/Airport/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../module_003/Airport/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../module_004/Birthdays/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../module_004/Birthdays/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../module_006/task_01/bankAccounts/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../module_006/task_01/bankAccounts/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/staff.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/staff.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -22,11 +30,6 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="y" value="23" />
-    <option name="width" value="1440" />
-    <option name="height" value="877" />
-  </component>
   <component name="ProjectId" id="1VS0aApSlvZmNT3DbJ9ickN21fL" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -38,6 +41,9 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558674161968" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -79,37 +85,29 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1237" height="192" key="GridCell.Tab.0.bottom" timestamp="1577234429450">
+    <state width="1237" height="131" key="GridCell.Tab.0.bottom" timestamp="1577982561426">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1237" height="192" key="GridCell.Tab.0.bottom/0.0.1280.689@0.0.1280.689" timestamp="1577234429450" />
-    <state width="1237" height="192" key="GridCell.Tab.0.center" timestamp="1577234429450">
+    <state width="1237" height="131" key="GridCell.Tab.0.bottom/0.0.1280.689@0.0.1280.689" timestamp="1577982561426" />
+    <state width="1237" height="131" key="GridCell.Tab.0.center" timestamp="1577982561426">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1237" height="192" key="GridCell.Tab.0.center/0.0.1280.689@0.0.1280.689" timestamp="1577234429450" />
-    <state width="1237" height="192" key="GridCell.Tab.0.left" timestamp="1577234429450">
+    <state width="1237" height="131" key="GridCell.Tab.0.center/0.0.1280.689@0.0.1280.689" timestamp="1577982561426" />
+    <state width="1237" height="131" key="GridCell.Tab.0.left" timestamp="1577982561425">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1237" height="192" key="GridCell.Tab.0.left/0.0.1280.689@0.0.1280.689" timestamp="1577234429450" />
-    <state width="1237" height="192" key="GridCell.Tab.0.right" timestamp="1577234429450">
+    <state width="1237" height="131" key="GridCell.Tab.0.left/0.0.1280.689@0.0.1280.689" timestamp="1577982561425" />
+    <state width="1237" height="131" key="GridCell.Tab.0.right" timestamp="1577982561426">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1237" height="192" key="GridCell.Tab.0.right/0.0.1280.689@0.0.1280.689" timestamp="1577234429450" />
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ProjectJDKs.UI">
-        <settings>
-          <last-edited>11</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
+    <state width="1237" height="131" key="GridCell.Tab.0.right/0.0.1280.689@0.0.1280.689" timestamp="1577982561426" />
+    <state x="121" y="0" key="SettingsEditor" timestamp="1577245441857">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="121" y="0" key="SettingsEditor/0.0.1280.689@0.0.1280.689" timestamp="1577245441857" />
+    <state x="337" y="169" key="com.intellij.ide.util.TipDialog" timestamp="1577928458244">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="337" y="169" key="com.intellij.ide.util.TipDialog/0.0.1280.689@0.0.1280.689" timestamp="1577928458244" />
   </component>
 </project>
