@@ -15,8 +15,11 @@ public class Main {
 
         System.out.println("A/C type      :      Depature time");
         System.out.println("===================================");
-        filteredFlights.stream().filter(f -> (f.getDate().after(new Date(System.currentTimeMillis()))
-                && f.getDate().before(new Date(System.currentTimeMillis() + 2 * 3600 * 1000))))
+        Date fromDate = new Date(System.currentTimeMillis());
+        Date toDate = new Date(System.currentTimeMillis() + 2 * 3600 * 1000);
+
+        filteredFlights.stream()
+                .filter(f -> (f.getDate().after(fromDate) && f.getDate().before(toDate)))
                 .forEach(f -> System.out.println(f.getAircraft() + " : " + f.getDate()));
 
 //        lujaika.getTerminals().stream().map(Terminal::getFlights).forEach(System.out::println);
