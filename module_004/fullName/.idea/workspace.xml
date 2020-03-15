@@ -2,10 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0119fe35-eb57-4a4a-bdfd-5e5f27b54954" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../module_005/task_02/ToDoList/out/production/ToDoList/Loader.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../module_005/task_02/ToDoList/out/production/ToDoList/Loader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../module_005/task_02/ToDoList/src/Loader.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../module_005/task_02/ToDoList/src/Loader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Alphabet/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Alphabet/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Alphabet/out/production/Alphabet/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Alphabet/out/production/Alphabet/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Alphabet/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Alphabet/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../StringExperiments/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../StringExperiments/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TextToWords/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../TextToWords/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../module_005/task_03/email/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../module_005/task_03/email/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../module_005/task_04/VIPplateNumGen/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../module_005/task_04/VIPplateNumGen/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../module_005/task_04/phoneBook/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../module_005/task_04/phoneBook/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../module_006/task_01/bankAccounts/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../module_006/task_01/bankAccounts/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../module_006/task_03/clients/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../module_006/task_03/clients/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../module_006/task_04/Company/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../module_006/task_04/Company/.idea/workspace.xml" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,21 +35,15 @@
   </component>
   <component name="ProjectId" id="1QQgyswAu85CvyinsowtkUQD75j" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../phoneNumber" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
   </component>
   <component name="RunManager">
     <configuration name="FullName" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -55,6 +58,18 @@
         <item itemvalue="Application.FullName" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />

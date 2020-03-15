@@ -2,16 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b1f2ea4a-ea58-4135-bcd8-48f14d7e07c5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../../module_007/airport/.idea/libraries/airport_1_0_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../module_007/airport/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../module_007/airport/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../module_007/airport/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../module_007/airport/airport.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../module_007/airport/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../module_003/Airport/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../module_003/Airport/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../module_007/LambdaExpressions/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../module_007/LambdaExpressions/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../module_007/LambdaExpressions/data/staff.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../module_007/LambdaExpressions/data/staff.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../module_007/LambdaExpressions/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../module_007/LambdaExpressions/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../module_004/Alphabet/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../module_004/Alphabet/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../module_004/Alphabet/out/production/Alphabet/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../module_004/Alphabet/out/production/Alphabet/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../module_004/Alphabet/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../module_004/Alphabet/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../task_03/clients/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../task_03/clients/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../task_04/Company/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../task_04/Company/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +35,7 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../module_005/task_04/VIPplateNumGen" />
     <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
   </component>
   <component name="RunManager">
@@ -97,5 +92,11 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="421" y="100" key="FileChooserDialogImpl" timestamp="1578845506185">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="421" y="100" key="FileChooserDialogImpl/0.0.1280.689@0.0.1280.689" timestamp="1578845506185" />
   </component>
 </project>

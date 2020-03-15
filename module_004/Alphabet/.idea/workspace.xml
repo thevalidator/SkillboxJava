@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="de422b76-31e2-4b72-833f-e5a9c1d337f8" name="Default Changelist" comment="" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <list default="true" id="de422b76-31e2-4b72-833f-e5a9c1d337f8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../StringExperiments/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../StringExperiments/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TextToWords/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../TextToWords/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fullName/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../fullName/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../module_005/task_03/email/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../module_005/task_03/email/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../module_005/task_04/VIPplateNumGen/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../module_005/task_04/VIPplateNumGen/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../module_005/task_04/phoneBook/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../module_005/task_04/phoneBook/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../module_006/task_01/bankAccounts/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../module_006/task_01/bankAccounts/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../module_006/task_03/clients/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../module_006/task_03/clients/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../module_006/task_04/Company/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../module_006/task_04/Company/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,32 +29,20 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
-  </component>
   <component name="ProjectId" id="1QNIF08DdX9SK9K83RIlRoNmuWw" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Birthdays" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -62,6 +60,18 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -74,6 +84,36 @@
       <updated>1565720354615</updated>
     </task>
     <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="421" y="100" key="FileChooserDialogImpl" timestamp="1579199861652">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="421" y="100" key="FileChooserDialogImpl/0.0.1280.689@0.0.1280.689" timestamp="1579199861652" />
+    <state width="1237" height="166" key="GridCell.Tab.0.bottom" timestamp="1580419936485">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state width="1237" height="166" key="GridCell.Tab.0.bottom/0.0.1280.689@0.0.1280.689" timestamp="1580419936485" />
+    <state width="1237" height="166" key="GridCell.Tab.0.center" timestamp="1580419936485">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state width="1237" height="166" key="GridCell.Tab.0.center/0.0.1280.689@0.0.1280.689" timestamp="1580419936485" />
+    <state width="1237" height="166" key="GridCell.Tab.0.left" timestamp="1580419936485">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state width="1237" height="166" key="GridCell.Tab.0.left/0.0.1280.689@0.0.1280.689" timestamp="1580419936485" />
+    <state width="1237" height="166" key="GridCell.Tab.0.right" timestamp="1580419936485">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state width="1237" height="166" key="GridCell.Tab.0.right/0.0.1280.689@0.0.1280.689" timestamp="1580419936485" />
+    <state x="337" y="169" key="com.intellij.ide.util.TipDialog" timestamp="1579259278724">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="337" y="169" key="com.intellij.ide.util.TipDialog/0.0.1280.689@0.0.1280.689" timestamp="1579259278724" />
+    <state x="348" y="0" key="refactoring.ChangeSignatureDialog" timestamp="1578845869855">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="348" y="0" key="refactoring.ChangeSignatureDialog/0.0.1280.689@0.0.1280.689" timestamp="1578845869855" />
   </component>
   <component name="masterDetails">
     <states>

@@ -2,22 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="734d524e-d852-47d6-ad17-6f2758d292ce" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../task_04/Company/src/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../task_04/Company/src/WorkFiles/Company.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../task_04/Company/src/WorkFiles/Employee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../task_01/bankAccounts/out/production/bankAccounts/Accounts/DepositAcc.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../task_01/bankAccounts/out/production/bankAccounts/Accounts/DepositAcc.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../task_01/bankAccounts/out/production/bankAccounts/Accounts/MainAccount.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../task_01/bankAccounts/out/production/bankAccounts/Accounts/MainAccount.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../task_01/bankAccounts/src/Accounts/DepositAcc.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../task_01/bankAccounts/src/Accounts/DepositAcc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/clients/bankAccounts/Clients.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/clients/bankAccounts/Clients.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/clients/bankAccounts/Individual.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/clients/bankAccounts/Individual.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/clients/bankAccounts/Legal.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/clients/bankAccounts/Legal.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/clients/bankAccounts/Physical.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/clients/bankAccounts/Physical.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bankAccounts/Clients.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bankAccounts/Clients.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bankAccounts/Individual.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bankAccounts/Individual.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bankAccounts/Legal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bankAccounts/Legal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bankAccounts/Physical.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bankAccounts/Physical.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../module_004/Alphabet/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../module_004/Alphabet/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../module_004/Alphabet/out/production/Alphabet/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../module_004/Alphabet/out/production/Alphabet/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../module_004/Alphabet/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../module_004/Alphabet/src/Main.java" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -35,20 +23,15 @@
   </component>
   <component name="ProjectId" id="1Tt5fcOOnnt6vszPc1M9e5vH7pV" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -63,6 +46,18 @@
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />

@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9cbacb47-812d-4739-904c-0cda98f7c330" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../module_004/Alphabet/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../module_004/Alphabet/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../module_004/Alphabet/out/production/Alphabet/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../module_004/Alphabet/out/production/Alphabet/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../module_004/Alphabet/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../module_004/Alphabet/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../task_03/clients/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../task_03/clients/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +35,7 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../task_01/bankAccounts" />
     <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
   </component>
   <component name="RunManager">
@@ -91,6 +95,10 @@
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="93" y="93" width="1095" height="504" key="DiffContextDialog/0.0.1280.689@0.0.1280.689" timestamp="1576696583459" />
+    <state x="421" y="100" key="FileChooserDialogImpl" timestamp="1578845485722">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="421" y="100" key="FileChooserDialogImpl/0.0.1280.689@0.0.1280.689" timestamp="1578845485722" />
     <state width="1237" height="130" key="GridCell.Tab.0.bottom" timestamp="1577185944251">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
