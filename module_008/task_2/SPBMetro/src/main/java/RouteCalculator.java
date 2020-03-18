@@ -28,12 +28,12 @@ public class RouteCalculator
         List<Station> route2 = getRouteWithTwoConnections(from, to);
 
         if(route1.size() != 0 && route2.size() != 0) {
-            if(route2.size() < route1.size()) {
+            if(route2.size() < route1.size() && calculateDuration(route2) < calculateDuration(route1)) {
                 route = route2;
             } else {
                 route = route1;
             }
-        } else if(route1.size() == 0){
+        } else if(route1.size() == 0) {
             route = route2;
         } else {
             route = route1;

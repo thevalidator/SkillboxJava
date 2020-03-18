@@ -29,11 +29,17 @@ public class Main
             Station to = takeStation("Введите станцию назначения:");
 
             List<Station> route = calculator.getShortestRoute(from, to);
-            System.out.println("Маршрут:");
-            printRoute(route);
 
-            System.out.println("Длительность: " +
-                RouteCalculator.calculateDuration(route) + " минут");
+            if(route.size() != 0) {
+                System.out.println("Маршрут:");
+                printRoute(route);
+
+                System.out.println("Длительность: " +
+                        RouteCalculator.calculateDuration(route) + " минут");
+            } else {
+                System.out.println("Что то пошло не так...");
+            }
+
         }
     }
 
