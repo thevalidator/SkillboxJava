@@ -24,19 +24,19 @@ public class RouteCalculator
             return route;
         }
 
-        List<Station> route1 = getRouteWithOneConnection(from, to);
+        route = getRouteWithOneConnection(from, to);
         List<Station> route2 = getRouteWithTwoConnections(from, to);
 
-        if(route1.size() != 0 && route2.size() != 0) {
-            if(route2.size() < route1.size() && calculateDuration(route2) < calculateDuration(route1)) {
+        if(route.size() != 0 && route2.size() != 0) {
+            if(route2.size() < route.size() && calculateDuration(route2) < calculateDuration(route)) {
                 route = route2;
             } else {
-                route = route1;
+                route = route;
             }
-        } else if(route1.size() == 0) {
+        } else if(route.size() == 0) {
             route = route2;
         } else {
-            route = route1;
+            route = route;
         }
 
         return route;

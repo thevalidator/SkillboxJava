@@ -34,7 +34,6 @@ public class RoadCalculatorTest extends TestCase {
         line4 = new Line(4,"four");
         line5 = new Line(5,"five");
 
-        //почему при объявлении Station stationIndex внутри метода SetUp, не работает addLine()?
         stationIndex.addLine(line1);
         stationIndex.addLine(line2);
         stationIndex.addLine(line3);
