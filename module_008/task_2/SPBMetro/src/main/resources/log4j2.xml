@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="WARN">
+    <appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+
+        <RollingFile name="info-log" fileName="logs/info.log">
+            <PatternLayout>
+                <pattern>[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+            </Policies>
+        </RollingFile>
+
+        <RollingFile name="error-log" fileName="logs/error.log">
+            <PatternLayout>
+                <pattern>[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+            </Policies>
+        </RollingFile>
+
+<!--        <File name="InfoLog" fileName="logs/info.log" immediateFlush="true">
+            <PatternLayout pattern="%d{yyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </File>
+
+        <File name="ErrorLog" fileName="logs/error.log" immediateFlush="true">
+            <PatternLayout pattern="%d{yyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </File>-->
+
+    </appenders>
+    <loggers>
+
+        <logger name="my-logger" level="debug" additivity="false">
+            <appender-ref ref="info-log"/>
+            <appender-ref ref="error-log"/>
+        </logger>
+
+        <root level="info" additivity="false">
+            <appender-ref ref="InfoLog" level="info" />
+
+        </root>
+    </loggers>
+</configuration>
+
+
+
+
+<!--        <?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+<Properties>
+    <Property name="log-path">logs</Property>
+    <Property name="log-pattern">[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1}- %msg%n"/</Property>
+</Properties>
+<Appenders>
+    <Console name="console-log" target="SYSTEM_OUT">
+        <PatternLayout>
+            <pattern>${log-pattern}</pattern>
+        </PatternLayout>
+    </Console>
+    <RollingFile name="trace-log" fileName="${log-path}/mycuteblog-trace.log" filePattern="${log-path}/mycuteblog-trace-%d{yyyy-MM-dd}.log">
+        <ThresholdFilter level="ERROR" onMatch="DENY" onMismatch="ACCEPT"/>
+        <PatternLayout>
+            <pattern>${log-pattern}</pattern>
+        </PatternLayout>
+        <Policies>
+            <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+        </Policies>
+    </RollingFile>
+    <RollingFile name="error-log" fileName="${log-path}/mycuteblog-error.log" filePattern="${log-path}/mycuteblog-error-%d{yyyy-MM-dd}.log">
+        <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
+        <PatternLayout>
+            <pattern>${log-pattern}</pattern>
+        </PatternLayout>
+        <Policies>
+            <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+        </Policies>
+    </RollingFile>
+</Appenders>-->
+<Loggers>
+    <Logger name="com.mycuteblog.log4j2" level="debug" additivity="false">
+        <appender-ref ref="trace-log" level="debug"/>
+        <appender-ref ref="error-log" level="error"/>
+        <appender-ref ref="console-log" level="debug"/>
+    </Logger>
+    <Root level="info" additivity="false">
+        <AppenderRef ref="console-log"/>
+    </Root>
+</Loggers>
+</Configuration>
