@@ -3,55 +3,40 @@
     <Properties>
         <Property name="log-path">logs</Property>
     </Properties>
+
     <appenders>
         <Console name="Console" target="SYSTEM_OUT">
             <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
         </Console>
 
-        <RollingFile name="info-log" fileName="logs/info.log" filePattern="${log-path}/info-%d{yyyy-MM-dd}.log">
+        <File name="enteredStations" fileName="${log-path}/info.log">
             <LevelRangeFilter minLevel="INFO" maxLevel="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
             <PatternLayout>
                 <pattern>[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n</pattern>
             </PatternLayout>
-            <Policies>
-                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
-            </Policies>
-        </RollingFile>
+        </File>
 
-        <RollingFile name="warn-log" fileName="logs/warn.log" filePattern="${log-path}/error-%d{yyyy-MM-dd}.log">
+        <File name="InvalidEnteredNStations" fileName="${log-path}/warn.log">
             <LevelRangeFilter minLevel="WARN" maxLevel="WARN" onMatch="ACCEPT" onMismatch="DENY"/>
             <PatternLayout>
                 <pattern>[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n</pattern>
             </PatternLayout>
-            <Policies>
-                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
-            </Policies>
-        </RollingFile>
+        </File>
 
-        <RollingFile name="error-log" fileName="logs/error.log" filePattern="${log-path}/error-%d{yyyy-MM-dd}.log">
+        <File name="error-log" fileName="${log-path}/error.log">
             <LevelRangeFilter minLevel="ERROR" maxLevel="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
             <PatternLayout>
                 <pattern>[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n</pattern>
             </PatternLayout>
-            <Policies>
-                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
-            </Policies>
-        </RollingFile>
-
+        </File>
     </appenders>
+
     <loggers>
-
-        <logger name="my-logger" level="debug" additivity="false">
-            <appender-ref ref="info-log" level="info"/>
-            <appender-ref ref="warn-log" level="warn"/>
-            <appender-ref ref="error-log" level="error"/>
-            <appender-ref ref="Console"/>
-        </logger>
-
         <root level="debug" additivity="false">
-            <appender-ref ref="info-log" level="info"/>
-            <appender-ref ref="warn-log" level="warn"/>
+            <appender-ref ref="enteredStations" level="info"/>
+            <appender-ref ref="InvalidEnteredNStations" level="warn"/>
             <appender-ref ref="error-log" level="error"/>
         </root>
     </loggers>
+
 </configuration>
