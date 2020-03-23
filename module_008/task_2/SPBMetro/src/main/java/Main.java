@@ -110,7 +110,7 @@ public class Main
         }
         catch(Exception ex) {
             ex.printStackTrace();
-            logger.error("Error createStationIndex: " + ex.getMessage());
+            logger.error("Error found: ", ex);
         }
     }
 
@@ -175,7 +175,7 @@ public class Main
         }
         catch (Exception ex) {
             ex.printStackTrace();
-            logger.error("Error getJsonFile: " + ex.getMessage());
+            logger.error("Error getJsonFile: ", ex);
         }
         return builder.toString();
     }
