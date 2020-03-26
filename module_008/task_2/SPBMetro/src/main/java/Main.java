@@ -15,7 +15,6 @@ import java.util.Scanner;
 public class Main
 {
     private static Logger logger;
-//    private static Logger infoLogger;
     private static String dataFile = "src/main/resources/map.json";
     private static Scanner scanner;
 
@@ -24,29 +23,32 @@ public class Main
     public static void main(String[] args)
     {
         logger = LogManager.getRootLogger();
-//        infoLogger = LogManager.getLogger();
-        RouteCalculator calculator = getRouteCalculator();
 
-        System.out.println("Программа расчёта маршрутов метрополитена Санкт-Петербурга\n");
-        scanner = new Scanner(System.in);
-        for(;;)
-        {
-            Station from = takeStation("Введите станцию отправления:");
-            Station to = takeStation("Введите станцию назначения:");
+        try {
+            RouteCalculator calculator = getRouteCalculator();
+            System.out.println("Программа расчёта маршрутов метрополитена Санкт-Петербурга\n");
+            scanner = new Scanner(System.in);
+            for(;;)
+            {
+                Station from = takeStation("Введите станцию отправления:");
+                Station to = takeStation("Введите станцию назначения:");
 
-            List<Station> route = calculator.getShortestRoute(from, to);
+                List<Station> route = calculator.getShortestRoute(from, to);
 
-            if(route.size() != 0) {
-                System.out.println("Маршрут:");
-                printRoute(route);
+                if(route.size() != 0) {
+                    System.out.println("Маршрут:");
+                    printRoute(route);
 
-                System.out.println("Длительность: " +
-                        RouteCalculator.calculateDuration(route) + " минут");
-            } else {
-                System.out.println("Что то пошло не так...");
+                    System.out.println("Длительность: " +
+                            RouteCalculator.calculateDuration(route) + " минут");
+                } else {
+                    System.out.println("Что то пошло не так...");
+                }
             }
-
+        } catch (Exception ex) {
+            logger.error("Error found: ", ex);
         }
+
     }
 
     private static RouteCalculator getRouteCalculator()
@@ -175,7 +177,7 @@ public class Main
         }
         catch (Exception ex) {
             ex.printStackTrace();
-            logger.error("Error getJsonFile: ", ex);
+            logger.error("Error found: ", ex);
         }
         return builder.toString();
     }
