@@ -21,7 +21,7 @@ public class Loader {
         Scanner scanner = new Scanner(System.in);
         for(;;) {
             String input = scanner.nextLine();
-            if(input.equals("stop")) {
+            if (input.equals("stop")) {
                 break;
             } else if (input.equals("list")) {
                 showList();
@@ -60,8 +60,8 @@ public class Loader {
     }
 
     public static String getKey(String value) {
-        for(String key : phoneBook.keySet()) {
-            if(phoneBook.get(key).equals(value)) {
+        for (String key : phoneBook.keySet()) {
+            if (phoneBook.get(key).equals(value)) {
                 return key;
             }
         }
@@ -69,7 +69,7 @@ public class Loader {
     }
 
     public static void showList() {
-        for(String key : phoneBook.keySet()) {
+        for (String key : phoneBook.keySet()) {
             System.out.println(key + "==>" + phoneBook.get(key));
         }
     }

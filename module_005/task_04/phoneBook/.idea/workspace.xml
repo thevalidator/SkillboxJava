@@ -2,13 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cce1f1ec-4239-4cd7-bcc4-f070d6b39812" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../../module_004/Alphabet/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../module_004/Alphabet/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../module_004/Alphabet/out/production/Alphabet/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../module_004/Alphabet/out/production/Alphabet/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../module_004/Alphabet/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../module_004/Alphabet/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../VIPplateNumGen/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../VIPplateNumGen/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../module_006/task_01/bankAccounts/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../module_006/task_01/bankAccounts/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../module_006/task_03/clients/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../module_006/task_03/clients/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../module_006/task_04/Company/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../module_006/task_04/Company/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../module_009/task01/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../module_009/task01/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../module_009/task01/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../module_009/task01/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../module_009/task01/src/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../module_009/task01/src/pkg/List.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../module_009/task01/src/pkg/ListSimple.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../module_009/task01/task01.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../module_009/task01_v2/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Loader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Loader.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +38,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../task_03/email" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
