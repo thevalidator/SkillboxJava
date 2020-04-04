@@ -7,9 +7,6 @@ import java.util.TreeMap;
 
 public class Main {
 
-    final static Long[] SIZE_GRADES = {1L, 1024L, (1024L * 1024), (1024L * 1024 * 1024), (1024L * 1024 * 1024 * 1024)};
-    final static String[] SIZE_NAMES = {"bytes", "Kbs", "Mbs", "Gbs", "Tbs"};
-
     public static void main(String[] args) {
 
         Path dir = Paths.get("C:\\Windows\\Globalization");
@@ -18,27 +15,21 @@ public class Main {
     }
 
     public static class SizeGradesAndNames {
-        private Long sizeGrade;
-        private String sizeName;
+        public long sizeGrade;
+        public String sizeName;
 
-        SizeGradesAndNames(Long sizeGrade, String sizeName) {
+        SizeGradesAndNames(long sizeGrade, String sizeName) {
             this.sizeGrade = sizeGrade;
             this.sizeName = sizeName;
         }
 
-        public Long getSizeGrade() {
-            return sizeGrade;
-        }
-
-        public String getSizeName() {
-            return sizeName;
-        }
-
     }
 
-    public static SizeGradesAndNames getSizeGradesAndNames(Long size) {
+    public static SizeGradesAndNames getSizeGradesAndNames(long size) {
+        final long[] SIZE_GRADES = {1L, 1024L, (1024L * 1024), (1024L * 1024 * 1024), (1024L * 1024 * 1024 * 1024)};
+        final String[] SIZE_NAMES = {"bytes", "Kbs", "Mbs", "Gbs", "Tbs"};
 
-        Long sizeGrade;
+        long sizeGrade;
         String sizeName;
 
         if (size >= (SIZE_GRADES[4])) {
@@ -82,13 +73,13 @@ public class Main {
         for (String name : list.keySet()) {
             SizeGradesAndNames fileSizeGradesAndNames = getSizeGradesAndNames(list.get(name));
             sizeTotal += list.get(name);
-            System.out.println(name + " - " + list.get(name) / fileSizeGradesAndNames.getSizeGrade() + " " +
-                    fileSizeGradesAndNames.getSizeName());
+            System.out.println(name + " - " + list.get(name) / fileSizeGradesAndNames.sizeGrade + " " +
+                    fileSizeGradesAndNames.sizeName);
         }
 
         SizeGradesAndNames totalSizeGradesAndNames = getSizeGradesAndNames(sizeTotal);
-        System.out.println("Total size: " + sizeTotal / totalSizeGradesAndNames.getSizeGrade() + " " +
-                totalSizeGradesAndNames.getSizeName());
+        System.out.println("Total size: " + sizeTotal / totalSizeGradesAndNames.sizeGrade + " " +
+                totalSizeGradesAndNames.sizeName);
     }
 
 }

@@ -1,14 +1,17 @@
 import java.io.IOException;
 import java.nio.file.*;
 import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Main {
     public static void main(String[] args) {
 
         Path dir = Paths.get("C:\\Windows\\Globalization");
-        listFilesAndSizeOfDirectory(dir);
+        try {
+            listFilesAndSizeOfDirectory(dir);
+        } catch (RuntimeException ex) {
+            ex.printStackTrace();
+        }
+
 
     }
 
@@ -29,13 +32,13 @@ public class Main {
                         }
                     });
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException("File read error: " + e);
         }
 
         for (String name : list.keySet()) {
             sizeTotal += list.get(name);
 
-            HashMap sizeGrades = getSizeGrade(list.get(name));
+            HashMap<Long, String> sizeGrades = getSizeGrade(list.get(name));
             for (Object key : sizeGrades.keySet()) {
                 divisor = (Long) key;
                 sizeName = (String) sizeGrades.get(key);
@@ -45,17 +48,17 @@ public class Main {
                     sizeName);
         }
 
-        HashMap sizeGrades = getSizeGrade(sizeTotal);
+        HashMap<Long, String> sizeGrades = getSizeGrade(sizeTotal);
         for (Object key : sizeGrades.keySet()) {
             divisor = (Long) key;
-            sizeName = (String) sizeGrades.get(key);
+            sizeName = sizeGrades.get(key);
         }
 
         System.out.println("Total size: " + sizeTotal / divisor + " " +
                 sizeName);
     }
 
-    public static HashMap getSizeGrade (long size) {
+    public static HashMap<Long, String> getSizeGrade (long size) {
 
         HashMap<Long, String> sizeGrade = new HashMap<>();
         long[] sizeGrades = {1L, 1024L, (1024L * 1024), (1024L * 1024 * 1024), (1024L * 1024 * 1024 * 1024)};
@@ -76,40 +79,4 @@ public class Main {
         return sizeGrade;
     }
 
-
-
-/*    public static long getSizeOfFile (Path directory) {
-        try {
-            long size = Files.size(directory);
-            System.out.println(size);
-            return size;
-        }  catch (IOException e) {
-            e.printStackTrace();
-        }
-        return 0;
-    }
-
-    public static void listEverythingInDirectory (Path directory) {
-        //should print everything with absolute address
-        try (Stream<Path> walk = Files.walk(directory)) {
-
-            List<String> result = walk.filter(Files::isRegularFile)
-                    .map(Path::toString).collect(Collectors.toList());
-
-            result.forEach(System.out::println);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static void listFoldersWithAbsAddressInDirectory (Path directory) {
-        //shows only folders with absolute address
-        try {
-            Files.list(directory)
-                    .forEach(path -> System.out.println(path));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }*/
 }
