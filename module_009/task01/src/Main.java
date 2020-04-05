@@ -12,7 +12,6 @@ public class Main {
             ex.printStackTrace();
         }
 
-
     }
 
     public static void listFilesAndSizeOfDirectory (Path directory) {

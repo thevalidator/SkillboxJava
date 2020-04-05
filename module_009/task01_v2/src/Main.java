@@ -15,8 +15,8 @@ public class Main {
     }
 
     public static class SizeGradesAndNames {
-        public long sizeGrade;
-        public String sizeName;
+        public final long sizeGrade;
+        public final String sizeName;
 
         SizeGradesAndNames(long sizeGrade, String sizeName) {
             this.sizeGrade = sizeGrade;
