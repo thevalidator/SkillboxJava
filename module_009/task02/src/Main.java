@@ -4,6 +4,8 @@ import java.nio.file.attribute.BasicFileAttributes;
 import java.util.HashSet;
 import java.util.Scanner;
 
+enum Option {PASS, PASS_ALL, REPLACE, REPLACE_ALL}
+
 public class Main {
 
     public static void main(String[] args) {
@@ -24,7 +26,7 @@ public class Main {
             Files.createDirectories(to);
         }
         try {
-            Files.walkFileTree(from, new HashSet<>(), Integer.MAX_VALUE, new FileVisitor<Path>() {
+            Files.walkFileTree(from, new HashSet<>(), Integer.MAX_VALUE, new SimpleFileVisitor<>() {
                 //EnumSet.noneOf(FileVisitOption.class)
                 boolean passAll = false;
                 boolean replaceAll = false;
@@ -42,15 +44,15 @@ public class Main {
                 public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
                     Path newFile = to.resolve(from.relativize(file));
                     if (Files.exists(newFile) && !replaceAll && !passAll) {
-                        int copyOption = getCopyOption();
-                        if (copyOption == 0) {
+                        Option copyOption = getCopyOption(newFile);
+                        if (copyOption == Option.PASS) {
                             return FileVisitResult.CONTINUE;
-                        } else if (copyOption == 1) {
+                        } else if (copyOption == Option.PASS_ALL) {
                             passAll = true;
                             return FileVisitResult.CONTINUE;
-                        } else if (copyOption == 2) {
+                        } else if (copyOption == Option.REPLACE) {
                             Files.copy(file, newFile, StandardCopyOption.REPLACE_EXISTING);
-                        } else if (copyOption == 3) {
+                        } else if (copyOption == Option.REPLACE_ALL) {
                             replaceAll = true;
                             Files.copy(file, newFile, StandardCopyOption.REPLACE_EXISTING);
                         }
@@ -62,16 +64,6 @@ public class Main {
                     Files.copy(file, newFile);
                     return FileVisitResult.CONTINUE;
                 }
-
-                @Override
-                public FileVisitResult visitFileFailed(Path file, IOException exc) throws IOException {
-                    return FileVisitResult.CONTINUE;
-                }
-
-                @Override
-                public FileVisitResult postVisitDirectory(Path dir, IOException exc) throws IOException {
-                    return FileVisitResult.SKIP_SUBTREE;
-                }
             } );
 
         } catch (IOException e) {
@@ -79,20 +71,32 @@ public class Main {
         }
     }
 
-    public static int getCopyOption() {
-        Scanner option = new Scanner(System.in);
+    public static Option getCopyOption(Path file) {
+        Scanner input = new Scanner(System.in);
         Integer result = null;
-        System.out.println("File already exists!");
+        System.out.println("File \"" + file.toString() + "\" already exists!");
         System.out.println("Type: 0 - pass, 1 - pass ALL, 2 - replace, 3 - replace ALL.");
 
         do {
             try {
-                result = option.nextInt();
+                result = input.nextInt();
             } catch (Exception e) {
                 System.out.println("Invalid input!");
+                input.next();
             }
-        } while (result == null);
-        return result;
+        } while (result == null || result < 0 || result > 3);
+
+        if (result == 0) {
+            return Option.PASS;
+        } else if (result == 1) {
+            return Option.PASS_ALL;
+        } else if (result == 2) {
+            return Option.REPLACE;
+        } else {
+            return Option.REPLACE_ALL;
+        }
+
     }
+
 
 }
