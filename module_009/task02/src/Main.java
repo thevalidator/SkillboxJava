@@ -1,10 +1,23 @@
 import java.io.IOException;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
-enum Option {PASS, PASS_ALL, REPLACE, REPLACE_ALL}
+enum Option {
+    PASS("Pass"),
+    PASS_ALL("Pass all"),
+    REPLACE("Replace "),
+    REPLACE_ALL("Replace all");
+
+    public final String desc;
+
+    Option(String desc) {
+        this.desc = desc;
+    }
+}
 
 public class Main {
 
@@ -73,30 +86,21 @@ public class Main {
 
     public static Option getCopyOption(Path file) {
         Scanner input = new Scanner(System.in);
-        Integer result = null;
         System.out.println("File \"" + file.toString() + "\" already exists!");
-        System.out.println("Type: 0 - pass, 1 - pass ALL, 2 - replace, 3 - replace ALL.");
 
+        System.out.println("Type: " + Arrays.stream(Option.values())
+                .map((Option e) -> e.ordinal() + " - " + e.desc)
+                .collect(Collectors.joining(", ")));
         do {
-            try {
-                result = input.nextInt();
-            } catch (Exception e) {
-                System.out.println("Invalid input!");
-                input.next();
+            String text = input.next();
+            if (text.matches("\\d+")) {
+                int i = Integer.parseInt(text);
+                if (i < Option.values().length) {
+                    return Option.values()[i];
+                }
             }
-        } while (result == null || result < 0 || result > 3);
-
-        if (result == 0) {
-            return Option.PASS;
-        } else if (result == 1) {
-            return Option.PASS_ALL;
-        } else if (result == 2) {
-            return Option.REPLACE;
-        } else {
-            return Option.REPLACE_ALL;
-        }
-
+            System.out.println("Invalid input!");
+        } while (true);
     }
-
-
+    
 }
