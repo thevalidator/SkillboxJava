@@ -2,6 +2,7 @@ package files;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class BankAccount {
 
@@ -11,9 +12,9 @@ public class BankAccount {
         transactions = new ArrayList<>();
     }
 
-    public void addTransaction(String accountNumber, Transaction.Currency currency, LocalDate date, double income,
+    public void addTransaction(String accountNumber, Transaction.Currency currency, LocalDate date, String category, double income,
                                double expense) {
-        transactions.add(new Transaction(accountNumber, currency, date, income, expense));
+        transactions.add(new Transaction(accountNumber, currency, date, category, income, expense));
     }
 
     public double getTotalIncome() {
@@ -31,5 +32,26 @@ public class BankAccount {
         }
         return totalExpense;
     }
+
+    private HashMap<String, Double> getCategories() {
+        HashMap<String, Double> amountByCategories = new HashMap<>();
+        for (Transaction transaction : transactions) {
+            String key = transaction.getCategory();
+            double value = 0.;
+            if (amountByCategories.containsKey(key)) {
+                value = amountByCategories.get(key);
+            }
+            amountByCategories.put(key, (value + (transaction.getIncome() - transaction.getExpense())));
+        }
+        return amountByCategories;
+    }
+
+    public void listTransactionsByCategories() {
+        HashMap<String, Double> list = getCategories();
+        for (String key : list.keySet()) {
+            System.out.println(key + " " + list.get(key));
+        }
+    }
+
 
 }

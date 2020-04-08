@@ -1,6 +1,7 @@
 package files;
 
 import java.time.LocalDate;
+import java.util.HashMap;
 
 public class Transaction {
 
@@ -11,14 +12,19 @@ public class Transaction {
     private LocalDate date;
     private double income;
     private double expense;
+    private String category;
 
-
-    Transaction(String accountNumber, Currency currency, LocalDate date, double income, double expense) {
+    Transaction(String accountNumber, Currency currency, LocalDate date, String category, double income, double expense) {
         this.accountNumber = accountNumber;
         this.currency = currency;
         this.date = date;
+        this.category = category;
         this.income = income;
         this.expense = expense;
+    }
+
+    public String getCategory() {
+        return category;
     }
 
     public double getIncome() {

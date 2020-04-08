@@ -14,7 +14,7 @@ public class Main {
         BankAccount userBankAccount = new BankAccount();
         String exportedTransactions = "src/files/movementList.csv";
         Pattern alfabankPattern = Pattern.compile("(.+),(?<accNumber>[0-9]+),([A-Z]+),"
-                + "(?<date>\\d\\d\\.\\d\\d\\.\\d\\d),(.+),(.+),"
+                + "(?<date>\\d\\d\\.\\d\\d\\.\\d\\d),(.+),(.+(?<category>(MCC\\d+))),"
                 + "(?<income>(\\d+)||\"(\\d+,\\d)*\"),(?<expense>(\\d+)||\"(\\d+,\\d*)\")$");
 
         try {
@@ -24,6 +24,7 @@ public class Main {
                 if (matcher.matches()) {
 
                     String accNumber = matcher.group("accNumber");
+                    String category = matcher.group("category");
                     LocalDate date = LocalDate.parse(matcher.group("date"),
                             DateTimeFormatter.ofPattern("dd.MM.yy"));
                     double income = Double.parseDouble(matcher.group("income")
@@ -31,7 +32,7 @@ public class Main {
                     double expense = Double.parseDouble(matcher.group("expense")
                             .replaceAll("\"","").replaceAll(",","."));
 
-                    userBankAccount.addTransaction(accNumber, Transaction.Currency.RUR, date, income, expense);
+                    userBankAccount.addTransaction(accNumber, Transaction.Currency.RUR, date, category, income, expense);
                 }
 
             }
@@ -41,6 +42,8 @@ public class Main {
 
         System.out.println("TOTAL INCOME: " + userBankAccount.getTotalIncome() + " " + Transaction.Currency.RUR
                 + "\nTOTAL EXPENSE: " + userBankAccount.getTotalExpense() + " " + Transaction.Currency.RUR);
+
+        userBankAccount.listTransactionsByCategories();
 
     }
 }
