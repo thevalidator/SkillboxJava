@@ -31,7 +31,7 @@ public class Main {
             }
 
             imagesList.forEach(str -> {
-                try (FileWriter writer = new FileWriter(String.valueOf(imageAddressLinks), false)) {
+                try (FileWriter writer = new FileWriter(String.valueOf(imageAddressLinks), true)) {
                     String fileName = imagesFolder.resolve(Paths.get(URI.create(str)
                             .getPath()).getFileName()).toString();
                     download(str, fileName);
