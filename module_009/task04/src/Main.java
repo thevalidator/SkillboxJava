@@ -19,23 +19,19 @@ public class Main {
 
         try {
 
-            List<String> imagesList = Jsoup.connect(url).maxBodySize(0).get()
+            List<String> imagesList = Jsoup.connect(url).timeout(5000).maxBodySize(0).get()
                     .select("img[class=g-picture]").eachAttr("src");
 
             for (Path dir : Arrays.asList(tempFolder, imagesFolder)) {
                 Files.createDirectories(dir);
             }
 
-            if (Files.notExists(imageAddressLinks) ) {
-                Files.createFile(imageAddressLinks);
-            }
-
-            imagesList.forEach(str -> {
-                try (FileWriter writer = new FileWriter(String.valueOf(imageAddressLinks), true)) {
-                    String fileName = imagesFolder.resolve(Paths.get(URI.create(str)
-                            .getPath()).getFileName()).toString();
-                    download(str, fileName);
-                    writer.write(str + "\n");
+            imagesList.forEach(link -> {
+                try (FileWriter writer = new FileWriter(imageAddressLinks.toFile(), true)) {
+                    Path fileName = imagesFolder.resolve(Paths.get(URI.create(link)
+                            .getPath()).getFileName());
+                    download(link, fileName);
+                    writer.write(link + "\n");
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
@@ -47,9 +43,9 @@ public class Main {
 
     }
 
-    private static void download(String FILE_URL, String FILE_NAME) {
-        try (InputStream in = new URL(FILE_URL).openStream()) {
-            Files.copy(in, Paths.get(FILE_NAME), StandardCopyOption.REPLACE_EXISTING);
+    private static void download(String fromUrl, Path toFile) {
+        try (InputStream in = new URL(fromUrl).openStream()) {
+            Files.copy(in, toFile, StandardCopyOption.REPLACE_EXISTING);
         } catch (Exception e) {
             e.printStackTrace();
         }
