@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="m09t04_parsingLenta:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/m09t04_parsingLenta_jar</output-path>
+    <root id="archive" name="m09t04_parsingLenta.jar">
+      <element id="module-output" name="m09t04_parsingLenta" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/src/data/jsoup-1.13.1.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
