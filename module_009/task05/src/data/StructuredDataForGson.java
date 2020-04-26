@@ -3,14 +3,14 @@ import java.util.ArrayList;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
-public class TestForGson {
+public class StructuredDataForGson {
 
     TreeMap<String, ArrayList<String>> stations;
     ArrayList<ArrayList<StationsConnection>> connections;
     TreeSet<Line> lines;
 
-    public TestForGson(TreeMap<String, ArrayList<String>> stations, TreeSet<Line> lines,
-                       ArrayList<ArrayList<StationsConnection>> connections) {
+    public StructuredDataForGson(TreeMap<String, ArrayList<String>> stations, TreeSet<Line> lines,
+                                 ArrayList<ArrayList<StationsConnection>> connections) {
         this.stations = stations;
         this.connections = connections;
         this.lines = lines;

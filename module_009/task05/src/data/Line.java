@@ -1,5 +1,7 @@
 package data;
 
+import com.google.gson.annotations.Expose;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,7 +9,7 @@ public class Line implements Comparable<Line> {
     private String number;
     private String name;
     private String color;
-    private List<Station> stations;
+    private transient List<Station> stations;
 
 
     public Line(String number, String name, String color)

@@ -12,17 +12,16 @@ import java.util.TreeSet;
 public class WikiParser {
 
     private static String stationsUrl = "https://ru.wikipedia.org/wiki/Список_станций_Московского_метрополитена";
-    private static Document webSite;
-    private static Elements rowsMetro;
-    private static Elements rowsMonorels;
-    private static Elements rowsMck;
-    private static Elements rowLines;
-    private static TreeSet<Line> lines;
+    private static String userAgent = "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:25.0) Gecko/20100101 Firefox/25.0";
+    private Document webSite;
+    private Elements rowsMetro;
+    private Elements rowsMonorels;
+    private Elements rowsMck;
+    private Elements rowLines;
+    private TreeSet<Line> lines;
 
     public WikiParser() throws IOException {
-        webSite = Jsoup.connect(stationsUrl)
-                .userAgent("Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:25.0) Gecko/20100101 Firefox/25.0")
-                .timeout(7000).maxBodySize(0).get();
+        webSite = establishInternetConnection(stationsUrl);
         rowsMetro = webSite.select("table:nth-child(7) > tbody > tr:has(td)");  // rows metro
         rowsMonorels = webSite.select("table:nth-child(9) > tbody > tr:has(td)");   // rows mck
         rowsMck = webSite.select("table:nth-child(11) > tbody > tr:has(td)");    // rows monorels
@@ -44,9 +43,7 @@ public class WikiParser {
 
             String color = "undefined";
             String lineLink = line.select("a[href]").attr("abs:href");
-            String colorData = Jsoup.connect(lineLink).
-                    userAgent("Mozilla/5.0 (Windows NT 6.1; WOW64; rv:5.0) Gecko/20100101 Firefox/5.0")
-                    .timeout(7000).maxBodySize(0).ignoreHttpErrors(true).get()
+            String colorData = establishInternetConnection(lineLink)
                     .select("table.infobox > tbody > tr:nth-child(2) > td:has(span) > span")
                     .attr("style");
 
@@ -62,7 +59,7 @@ public class WikiParser {
     }
 
     //   METHOD WHICH RETURNS OBJECT WITH FULL DATA FOR JSON
-    public TestForGson getAllData() throws IOException {
+    public StructuredDataForGson getAllData() throws IOException {
         //  *************  список линий
         TreeSet<Line> linesList = lines;
         //   ************  списки станций и пересадок
@@ -106,9 +103,7 @@ public class WikiParser {
                     if (!transferStationNameLink.isEmpty()) {
                         connectedStations.add(new StationsConnection(key, stationName.text()));
                         for (int i = 0; i < transferStationNameLink.size(); i++) {
-                            Document page = Jsoup.connect(transferStationNameLink.get(i)).
-                                    userAgent("Mozilla/5.0 (Windows NT 6.1; WOW64; rv:5.0) Gecko/20100101 Firefox/5.0")
-                                    .timeout(7000).ignoreHttpErrors(true).get();
+                            Document page = establishInternetConnection(transferStationNameLink.get(i));
 
                             String lineNumber = lineNumbers[i];
                             String name = page.select("h1[id=firstHeading]").text();
@@ -127,15 +122,18 @@ public class WikiParser {
 
         }
 
-        return new TestForGson(stationsByLines, linesList, connectedStationsList);
+        return new StructuredDataForGson(stationsByLines, linesList, connectedStationsList);
 
     }
-    //  END  OF ONE  METHOD
+    //  END  OF THE METHOD
 
+    private Document establishInternetConnection (String link) throws IOException {
+        return Jsoup.connect(link).userAgent(userAgent).timeout(7000).ignoreHttpErrors(true).get();
+    }
 
-    public static ArrayList<Line> searchLine (ArrayList<String> linesList) {
+    private ArrayList<Line> searchLine (ArrayList<String> linesList) {
+
         ArrayList<Line> foundLines = new ArrayList<>();
-
         for (String text : linesList) {
             for (Line line : lines) {
                 if (line.getNumber().equalsIgnoreCase(text)) {
@@ -143,7 +141,6 @@ public class WikiParser {
                 }
             }
         }
-
         return foundLines;
     }
 

@@ -1,6 +1,6 @@
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import data.TestForGson;
+import data.StructuredDataForGson;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -22,9 +22,9 @@ public class Main {
             FileWriter writer = new FileWriter(metroStructureFile.toFile(), false);
             WikiParser data = new WikiParser();
 
-            TestForGson gsonstruk = data.getAllData();
-            String gsontxt = gson.toJson(gsonstruk);
-            writer.write(gsontxt);
+            StructuredDataForGson jsonData = data.getAllData();
+            String jsontxt = gson.toJson(jsonData);
+            writer.write(jsontxt);
             writer.close();
 
         } catch (IOException e) {
