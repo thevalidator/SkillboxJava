@@ -1,18 +1,16 @@
 package data;
 
-import java.util.ArrayList;
-
-public class Station implements Comparable<Station> {
-    private ArrayList<Line> line;
+public class Station implements Comparable<Station>{
+    private Line line;
     private String name;
 
-    public Station(String name, ArrayList<Line> line)
+    public Station(String name, Line line)
     {
-        this.line = line;
         this.name = name;
+        this.line = line;
     }
 
-    public ArrayList<Line> getLine()
+    public Line getLine()
     {
         return line;
     }
@@ -23,12 +21,26 @@ public class Station implements Comparable<Station> {
     }
 
     @Override
-    public int compareTo(Station station) {
-        int lineComparison = line.get(0).compareTo(station.getLine().get(0));
+    public int compareTo(Station station)
+    {
+        int lineComparison = line.compareTo(station.getLine());
         if(lineComparison != 0) {
             return lineComparison;
         }
         return name.compareToIgnoreCase(station.getName());
     }
+
+    @Override
+    public boolean equals(Object obj)
+    {
+        return compareTo((Station) obj) == 0;
+    }
+
+    @Override
+    public String toString()
+    {
+        return name;
+    }
+
 
 }

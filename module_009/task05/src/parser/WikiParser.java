@@ -1,4 +1,4 @@
-import data.*;
+package parser;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -18,7 +18,7 @@ public class WikiParser {
     private Elements rowsMonorels;
     private Elements rowsMck;
     private Elements rowLines;
-    private TreeSet<Line> lines;
+    private TreeSet<LineForJson> lines;
 
     public WikiParser() throws IOException {
         webSite = establishInternetConnection(stationsUrl);
@@ -29,9 +29,9 @@ public class WikiParser {
         lines = getAllLines();
     }
 
-    public TreeSet<Line> getAllLines() throws IOException {
+    public TreeSet<LineForJson> getAllLines() throws IOException {
 
-        TreeSet<Line> linesList = new TreeSet<>();
+        TreeSet<LineForJson> linesList = new TreeSet<>();
         for (Element line : rowLines) {
             String number;
             if (!line.select("span").isEmpty()) {
@@ -53,18 +53,15 @@ public class WikiParser {
                 color = colorData.substring(cutStart, cutEnd);
             }
 
-            linesList.add(new Line(number, name, color));
+            linesList.add(new LineForJson(number, name, color));
         }
         return linesList;
     }
 
-    //   METHOD WHICH RETURNS OBJECT WITH FULL DATA FOR JSON
-    public StructuredDataForGson getAllData() throws IOException {
-        //  *************  список линий
-        TreeSet<Line> linesList = lines;
+    public StructuredDataForGson getFullDataForJsonFile() throws IOException {
         //   ************  списки станций и пересадок
         TreeMap<String, ArrayList<String>> stationsByLines = new TreeMap<>();
-        ArrayList<ArrayList<StationsConnection>> connectedStationsList = new ArrayList<>();
+        ArrayList<ArrayList<StationsConnectionForJson>> connectedStationsList = new ArrayList<>();
         Elements[] allStations = {rowsMetro, rowsMonorels, rowsMck};
 
         for (Elements elements : allStations) {
@@ -78,18 +75,18 @@ public class WikiParser {
                     stationLines.add(stationLinesData[i]);
                 }
                 // Проверка полученных номеров линий на совпадение со списком линий
-                ArrayList<Line> lines = searchLine(stationLines);
+                ArrayList<LineForJson> lines = searchLine(stationLines);
                 // Получени названия станции
                 Element stationName = row.select("td:eq(1) a[title]").first();
 
-                for( Line line : lines) {
-                    String key = line.getNumber();
-                    if(!stationsByLines.containsKey(key)) {
-                        stationsByLines.put(key, new ArrayList<>());
+                for( LineForJson line : lines) {
+                    String number = line.getNumber();
+                    if(!stationsByLines.containsKey(number)) {
+                        stationsByLines.put(number, new ArrayList<>());
                     }
-                    ArrayList<String> value = stationsByLines.get(key);
-                    value.add(stationName.text());
-                    stationsByLines.put(key, value);
+                    ArrayList<String> stations = stationsByLines.get(number);
+                    stations.add(stationName.text());
+                    stationsByLines.put(number, stations);
 
                     // поиск и создание списка станций пересадок с линиями
                     Elements transferLinesData = row.select("td:eq(3) span");
@@ -98,10 +95,10 @@ public class WikiParser {
                     List<String> transferStationNameLink = transferLinesData.select("span[title] a[href]")
                             .eachAttr("abs:href");
 
-                    ArrayList<StationsConnection> connectedStations = new ArrayList<>();
+                    ArrayList<StationsConnectionForJson> connectedStations = new ArrayList<>();
 
                     if (!transferStationNameLink.isEmpty()) {
-                        connectedStations.add(new StationsConnection(key, stationName.text()));
+                        connectedStations.add(new StationsConnectionForJson(number, stationName.text()));
                         for (int i = 0; i < transferStationNameLink.size(); i++) {
                             Document page = establishInternetConnection(transferStationNameLink.get(i));
 
@@ -110,7 +107,7 @@ public class WikiParser {
                             if (name.contains("(")) {
                                 name = name.substring(0, name.indexOf("(")).trim();
                             }
-                            connectedStations.add(new StationsConnection(lineNumber, name));
+                            connectedStations.add(new StationsConnectionForJson(lineNumber, name));
                         }
 
                     }
@@ -122,20 +119,19 @@ public class WikiParser {
 
         }
 
-        return new StructuredDataForGson(stationsByLines, linesList, connectedStationsList);
+        return new StructuredDataForGson(stationsByLines, connectedStationsList, lines);
 
     }
-    //  END  OF THE METHOD
 
     private Document establishInternetConnection (String link) throws IOException {
         return Jsoup.connect(link).userAgent(userAgent).timeout(7000).ignoreHttpErrors(true).get();
     }
 
-    private ArrayList<Line> searchLine (ArrayList<String> linesList) {
+    private ArrayList<LineForJson> searchLine (ArrayList<String> linesList) {
 
-        ArrayList<Line> foundLines = new ArrayList<>();
+        ArrayList<LineForJson> foundLines = new ArrayList<>();
         for (String text : linesList) {
-            for (Line line : lines) {
+            for (LineForJson line : lines) {
                 if (line.getNumber().equalsIgnoreCase(text)) {
                     foundLines.add(line);
                 }
