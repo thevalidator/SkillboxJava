@@ -1,5 +1,7 @@
 package data;
 
+import java.util.Comparator;
+
 public class Station implements Comparable<Station>{
     private Line line;
     private String name;
@@ -21,13 +23,9 @@ public class Station implements Comparable<Station>{
     }
 
     @Override
-    public int compareTo(Station station)
-    {
-        int lineComparison = line.compareTo(station.getLine());
-        if(lineComparison != 0) {
-            return lineComparison;
-        }
-        return name.compareToIgnoreCase(station.getName());
+    public int compareTo(Station station) {
+        return Comparator.comparing(Station::getLine).thenComparing(s -> s.getName().toLowerCase())
+                .compare(this, station);
     }
 
     @Override

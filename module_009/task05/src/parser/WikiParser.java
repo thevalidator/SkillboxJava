@@ -4,15 +4,12 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.TreeMap;
-import java.util.TreeSet;
+import java.util.*;
 
 public class WikiParser {
 
-    private static String stationsUrl = "https://ru.wikipedia.org/wiki/Список_станций_Московского_метрополитена";
-    private static String userAgent = "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:25.0) Gecko/20100101 Firefox/25.0";
+    private final static String STATIONS_URL = "https://ru.wikipedia.org/wiki/Список_станций_Московского_метрополитена";
+    private final static String USER_AGENT = "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:25.0) Gecko/20100101 Firefox/25.0";
     private Document webSite;
     private Elements rowsMetro;
     private Elements rowsMonorels;
@@ -21,7 +18,7 @@ public class WikiParser {
     private TreeSet<LineForJson> lines;
 
     public WikiParser() throws IOException {
-        webSite = establishInternetConnection(stationsUrl);
+        webSite = establishInternetConnection(STATIONS_URL);
         rowsMetro = webSite.select("table:nth-child(7) > tbody > tr:has(td)");  // rows metro
         rowsMonorels = webSite.select("table:nth-child(9) > tbody > tr:has(td)");   // rows mck
         rowsMck = webSite.select("table:nth-child(11) > tbody > tr:has(td)");    // rows monorels
@@ -70,10 +67,8 @@ public class WikiParser {
                 // Получение данных из ячейки принадлежности к линии
                 String[] stationLinesData = row.select("td:eq(0) span[class=sortkey]").text().split(" ");
                 // Получение списка линий к которым принадлежит станция
-                ArrayList<String> stationLines = new ArrayList<>();
-                for (int i = 0; i < stationLinesData.length - 1; i++) {
-                    stationLines.add(stationLinesData[i]);
-                }
+                ArrayList<String> stationLines = (ArrayList<String>) Arrays.asList(stationLinesData);
+                stationLines.remove(stationLines.size() - 1);
                 // Проверка полученных номеров линий на совпадение со списком линий
                 ArrayList<LineForJson> lines = searchLine(stationLines);
                 // Получени названия станции
@@ -124,7 +119,7 @@ public class WikiParser {
     }
 
     private Document establishInternetConnection (String link) throws IOException {
-        return Jsoup.connect(link).userAgent(userAgent).timeout(7000).ignoreHttpErrors(true).get();
+        return Jsoup.connect(link).userAgent(USER_AGENT).timeout(7000).ignoreHttpErrors(true).get();
     }
 
     private ArrayList<LineForJson> searchLine (ArrayList<String> linesList) {

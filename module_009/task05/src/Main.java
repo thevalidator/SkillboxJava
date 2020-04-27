@@ -111,7 +111,7 @@ public class Main {
                 Station station = core.getStation(sLineNumber, sName);
                 if(station == null)
                 {
-                    throw new IllegalArgumentException("core.Station " +
+                    throw new IllegalArgumentException("Station " +
                             sName + " on line " + sLineNumber + " not found");
                 }
                 connectedStations.add(station);

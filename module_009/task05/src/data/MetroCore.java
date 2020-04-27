@@ -43,17 +43,9 @@ public class MetroCore {
         stations.add(station);
     }
 
-    public void addConnection(List<Station> stations)
-    {
-        for(Station station : stations)
-        {
-            if(!connections.containsKey(station)) {
-                connections.put(station, new TreeSet<>());
-            }
-            TreeSet<Station> connectedStations = connections.get(station);
-            connectedStations.addAll(stations.stream()
-                    .filter(s -> !s.equals(station)).collect(Collectors.toList()));
-        }
+    public void addConnection(List<Station> stations) {
+        stations.forEach(station -> connections.computeIfAbsent(station, key -> new TreeSet<>())
+                .addAll(stations.stream().filter(s -> !s.equals(station)).collect(Collectors.toList())));
     }
 
 }
