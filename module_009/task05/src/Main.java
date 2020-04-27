@@ -47,6 +47,9 @@ public class Main {
             parseLines(linesArray);
             JsonObject stationsMap = object.getAsJsonObject("stations");
             parseStations(stationsMap);
+            JsonArray connectionArray = object.getAsJsonArray("connections");
+            parseConnections(connectionArray);
+
 
             core.getAllLines().forEach((n, line) -> {
                 ArrayList<Station> stations = line.getStations();
@@ -54,6 +57,13 @@ public class Main {
                 stations.forEach(station -> System.out.println("\t \t - " + station.getName()));
 
             });
+
+            core.getConnections().forEach(((station, stations) -> {
+                System.out.println("***  Станция " + station.getName() + " линии " + station.getLine().getName()
+                        + "имеет пересадки на:");
+                stations.forEach(s -> System.out.println(" \t\t- " + "станцию " + s.getName() + " линии "
+                        + s.getLine().getName()));
+            }));
 
 
         } catch (IOException e) {
@@ -88,6 +98,26 @@ public class Main {
 
         });
 
+    }
+
+    public static void parseConnections(JsonArray array) {
+        array.forEach(connectionObject -> {
+            ArrayList<Station> connectedStations = new ArrayList<>();
+            JsonArray connection = connectionObject.getAsJsonArray();
+            connection.forEach(e -> {
+                JsonObject stationObject = e.getAsJsonObject();
+                String sName = stationObject.get("station").getAsString();
+                String sLineNumber = stationObject.get("line").getAsString();
+                Station station = core.getStation(sLineNumber, sName);
+                if(station == null)
+                {
+                    throw new IllegalArgumentException("core.Station " +
+                            sName + " on line " + sLineNumber + " not found");
+                }
+                connectedStations.add(station);
+            });
+            core.addConnection(connectedStations);
+        });
     }
 
 }
