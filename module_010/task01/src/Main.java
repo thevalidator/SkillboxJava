@@ -15,8 +15,7 @@ public class Main {
             e.printStackTrace();
         }
 
-        try {
-            Connection connection = DriverManager.getConnection(url, user, pass);
+        try (Connection connection = DriverManager.getConnection(url, user, pass)) {
             Statement statement = connection.createStatement();
 
             ResultSet rs = statement.executeQuery("select name, avg(qnty) as qnty " +
@@ -31,7 +30,6 @@ public class Main {
                         Double.parseDouble(rs.getString("qnty")));
             }
 
-            connection.close();
 
         } catch (Exception ex) {
             ex.printStackTrace();
