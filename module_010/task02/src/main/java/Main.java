@@ -14,15 +14,22 @@ public class Main {
         try {
             StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure().build();
             Metadata metadata = new MetadataSources(registry).getMetadataBuilder().build();
-            SessionFactory sessionFactory = metadata.getSessionFactoryBuilder().build();
+            sessionFactory = metadata.getSessionFactoryBuilder().build();
 
             Session session = sessionFactory.openSession();
-            for (int i = 1; i < 4; i++) {
+
+/*            for (int i = 1; i < 4; i++) {
                 Course course = session.get(Course.class, i);
                 System.out.println(course.getName() + ": " + course.getPrice() + " руб.");
             }
-            Student student = session.get(Student.class, 1);
-            System.out.println(student.getName() + " " + student.getRegistrationDate());
+            Student student = session.get(Student.class, 4);
+            System.out.println(student.getName() + " " + student.getRegistrationDate());*/
+
+            Course course = session.get(Course.class, 1);
+            System.out.println("Список студентов курса: " + course.getName());
+            course.getStudents().forEach(s -> System.out.println((course.getStudents().indexOf(s) + 1)
+                    + ": " + s.getName()));
+
             session.close();
         } catch (Exception e) {
             e.printStackTrace();

@@ -12,7 +12,6 @@ public class Student {
     private int age;
     @Column(name = "registration_date")
     private LocalDateTime registrationDate;
-//    protected Subscription subscription;
 
     public int getId() {
         return id;
@@ -45,12 +44,4 @@ public class Student {
     public void setRegistrationDate(LocalDateTime registrationDate) {
         this.registrationDate = registrationDate;
     }
-
-/*    public Subscription getSubscription() {
-        return subscription;
-    }
-
-    public void setSubscription(Subscription subscription) {
-        this.subscription = subscription;
-    }*/
 }
