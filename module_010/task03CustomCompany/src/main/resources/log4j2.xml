@@ -16,7 +16,7 @@
         <Logger name = "fileLogger" level = "TRACE" additivity = "FALSE">
             <AppenderRef ref = "File"/>
         </Logger>
-        <Logger name = "studentModel" level = "TRACE" additivity = "FALSE">
+        <Logger name = "trace" level = "TRACE" additivity = "FALSE">
             <AppenderRef ref = "Console"/>
         </Logger>
     </Loggers>

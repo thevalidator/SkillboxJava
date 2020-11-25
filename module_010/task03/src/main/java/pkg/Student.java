@@ -1,3 +1,5 @@
+package pkg;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 

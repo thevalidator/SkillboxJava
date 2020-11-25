@@ -1,11 +1,11 @@
 package Workfiles;
 
+
 public class TopManager extends Employee {
 
-    private Company company;
-
     public TopManager(Company company) {
-        this.company = company;
+        setCompany(company);
+        monthSalary = getMonthSalary();
     }
 
     @Override

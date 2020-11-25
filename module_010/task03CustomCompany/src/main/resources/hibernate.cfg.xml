@@ -19,7 +19,10 @@
         <!-- xxxxx the database schema on startup -->
         <property name="hbm2ddl.auto">create</property>
 
-        <mapping class="Student"/>
-        <mapping class="Workfiles.Company"/>
+        <mapping class="Workfiles.Entities.CompanyEntity"/>
+        <mapping class="Workfiles.Entities.EmployeeEntity"/>
+        <mapping class="Workfiles.Entities.OperatorEntity"/>
+        <mapping class="Workfiles.Entities.ManagerEntity"/>
+        <mapping class="Workfiles.Entities.TopManagerEntity"/>
     </session-factory>
 </hibernate-configuration>

@@ -1,70 +1,130 @@
 import Workfiles.Company;
+import Workfiles.Employee;
+import Workfiles.Entities.*;
+import Workfiles.Manager;
+import Workfiles.Operator;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.boot.Metadata;
+import org.hibernate.boot.MetadataSources;
+import org.hibernate.boot.registry.StandardServiceRegistry;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
 
 public class Main {
 
+    static SessionFactory sessionFactory;
+
     public static void main(String[] args) {
 
-        /*String topManager = "topManager";
+        final Logger LOG = LogManager.getLogger("trace");
+
+        StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure().build();
+        Metadata metadata = new MetadataSources(registry).getMetadataBuilder().build();
+        sessionFactory = metadata.getSessionFactoryBuilder().build();
+
+        String topManager = "topManager";
         String manager = "manager";
         String operator = "operator";
 
-        int num = 2;
-        Company drova = new Company();
-        Company roga = new Company();
-        Company kopyta = new Company();
+        Company bellaz = new Company();
+        LOG.info("new company created ");
+        bellaz.setCompanyName("BELLAZ");
+        LOG.info("company's name is set to " + bellaz.getCompanyName());
+        Company scania = new Company();
+        scania.setCompanyName("SCANIA");
+        Company mercedes = new Company("MERCEDES");
 
-        drova.setCompanyName("DROVA");
-        roga.setCompanyName("ROGA");
-        kopyta.setCompanyName("KOPYTA");
+        bellaz.hire(operator);
+        LOG.info("Company " + bellaz.getCompanyName() + " hired new employee " + bellaz.getEmployeeList().get(0).getClass().toString());
+        bellaz.hire(operator);
+        LOG.info("Company " + bellaz.getCompanyName() + " hired new employee " + bellaz.getEmployeeList().get(1).getClass().toString());
+        bellaz.hire(operator);
+        LOG.info("Company " + bellaz.getCompanyName() + " hired new employee " + bellaz.getEmployeeList().get(2).getClass().toString());
+        bellaz.hire(manager);
+        LOG.info("Company " + bellaz.getCompanyName() + " hired new employee " + bellaz.getEmployeeList().get(3).getClass().toString());
+        bellaz.hire(operator);
+        LOG.info("Company " + bellaz.getCompanyName() + " hired new employee " + bellaz.getEmployeeList().get(4).getClass().toString());
+        bellaz.hire(operator);
+        LOG.info("Company " + bellaz.getCompanyName() + " hired new employee " + bellaz.getEmployeeList().get(5).getClass().toString());
+        bellaz.hire(operator);
+        LOG.info("Company " + bellaz.getCompanyName() + " hired new employee " + bellaz.getEmployeeList().get(6).getClass().toString());
+        bellaz.hire(manager);
+        LOG.info("Company " + bellaz.getCompanyName() + " hired new employee " + bellaz.getEmployeeList().get(7).getClass().toString());
+        bellaz.hire(topManager);
+        LOG.info("Company " + bellaz.getCompanyName() + " hired new employee " + bellaz.getEmployeeList().get(8).getClass().toString());
 
-        drova.hire(manager);
-        drova.hire(topManager);
+        scania.hire(operator);
+        scania.hire(operator);
+        scania.hire(operator);
+        scania.hire(manager);
+        scania.hire(topManager);
 
-        roga.hire(manager);
-        roga.hire(operator);
-        roga.hire(topManager);
+        save(bellaz);
+        save(scania);
+        save(mercedes);
 
-        kopyta.hireAll();
-
-        System.out.println(drova.getCompanyIncome());
-        System.out.println(drova.employeeList.size());
-        System.out.println(drova.employeeList.get(0).getMonthSalary());
-        drova.getLowSalaryStaff(num);
-        drova.getTopSalaryStaff(num);
-
-        roga.getLowSalaryStaff(num);
-        roga.getTopSalaryStaff(num);
-
-        kopyta.getTopSalaryStaff(15);
-        roga.getTopSalaryStaff(2);
-
-        System.out.println(drova.getCompanyIncome());
-        System.out.println(roga.getCompanyIncome());
-        System.out.println(kopyta.getCompanyIncome());*/
-
-        StudentModel studentModel = new StudentModel();
-
-        Student nikita = new Student();
-        nikita.setName("Nikita");
-        nikita.setUniversity("MGIMO");
-
-        Student babkaStudent = new Student();
-        babkaStudent.setName("Babka");
-        babkaStudent.setUniversity("PTU-31");
-
-        Student dedStudent = new Student();
-        dedStudent.setName("Ded");
-        dedStudent.setUniversity("Garvard College");
-
-        studentModel.create(nikita);
-        studentModel.create(babkaStudent);
-        studentModel.create(dedStudent);
-
-        for(Student student : studentModel.findAll()) {
-            System.out.println("ID: " + student.getId() + ", NAME: " + student.getName() + ", UNIVERSITY: " +
-                    student.getUniversity());
-        }
+        sessionFactory.close();
 
     }
+
+    public static void loadFromDB() {
+
+    }
+
+    public static void save(Company c) {
+        Session session = null;
+        Transaction transaction = null;
+        try {
+            session = sessionFactory.openSession();
+            transaction = session.beginTransaction();
+
+            CompanyEntity companyEntity = mapCompany(c);
+            session.save(companyEntity);
+
+            if (!companyEntity.getEmployeeList().isEmpty()) {
+                companyEntity.getEmployeeList().forEach(session::save);
+            }
+
+            transaction.commit();
+            session.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static CompanyEntity mapCompany(Company c) {
+        CompanyEntity companyEntity = new CompanyEntity();
+        companyEntity.setCompanyName(c.getCompanyName());
+        companyEntity.setCompanyIncomeGoal(c.getCompanyIncomeGoal());
+        c.getEmployeeList().forEach(e -> {
+            companyEntity.getEmployeeList().add(mapEmployee(e, companyEntity));
+        });
+
+        return companyEntity;
+    }
+
+    public static EmployeeEntity mapEmployee(Employee e, CompanyEntity cE) {
+
+        EmployeeEntity employeeEntity;
+
+        if (e instanceof Operator) {
+            employeeEntity = new OperatorEntity();
+            employeeEntity.setCompany(cE);
+        } else if (e instanceof Manager) {
+            employeeEntity = new ManagerEntity();
+            ((ManagerEntity) employeeEntity).setSalesAmount(e.getSalesAmount());
+        } else {
+            employeeEntity = new TopManagerEntity();
+        }
+        employeeEntity.setMonthSalary(e.getMonthSalary());
+        employeeEntity.setCompany(cE);
+
+        return employeeEntity;
+    }
+
+
 }
