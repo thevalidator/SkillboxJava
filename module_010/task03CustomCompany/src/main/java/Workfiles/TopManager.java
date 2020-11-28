@@ -3,6 +3,8 @@ package Workfiles;
 
 public class TopManager extends Employee {
 
+    public TopManager() {}
+
     public TopManager(Company company) {
         setCompany(company);
         monthSalary = getMonthSalary();

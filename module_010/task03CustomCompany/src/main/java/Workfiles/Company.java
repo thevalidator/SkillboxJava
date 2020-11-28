@@ -27,16 +27,10 @@ public class Company {
         this.companyName = companyName;
     }
 
-    public void hire(String position) {
-        if (position.equalsIgnoreCase("topmanager")) {
-            employeeList.add(new TopManager(this));
-        } else if (position.equalsIgnoreCase("manager")) {
-            employeeList.add(new Manager(this));
-        } else if (position.equalsIgnoreCase("operator")) {
-            employeeList.add(new Operator(this));
-        } else {
-            System.out.println("incorrect employee position");
-        }
+    public void hire(Employee employee) {
+        employee.setCompany(this);
+        employee.setMonthSalary(employee.getMonthSalary());
+        employeeList.add(employee);
     }
 
     public void hireAll() {
@@ -64,7 +58,7 @@ public class Company {
     }
 
     public List<Employee> getEmployeeList() {
-        return employeeList;
+        return Collections.unmodifiableList(employeeList);
     }
 
     public double getCompanyIncomeGoal() {
@@ -75,12 +69,11 @@ public class Company {
         this.companyIncomeGoal = companyIncomeGoal;
     }
 
-    public void getTopSalaryStaff(int count) {
+    public void printTopSalaryStaff(int count) {
         if (count > employeeList.size() || count < 0) {
             System.out.println("Error, the number can't be more than " + employeeList.size() + " and less than zero.");
         } else {
-            SalaryComparator salaryComparator = new SalaryComparator();
-            employeeList.sort(Collections.reverseOrder(salaryComparator));
+            employeeList.sort(Comparator.comparingDouble(Employee::getMonthSalary).reversed());
             System.out.println("TOP HIGHEST " + count + " SALARIES");
             for (int i = 0; i < count; i++) {
                 System.out.println((i + 1) + ". " + employeeList.get(i).getMonthSalary());
@@ -88,12 +81,11 @@ public class Company {
         }
     }
 
-    public void getLowSalaryStaff(int count) {
+    public void printLowSalaryStaff(int count) {
         if (count > employeeList.size() || count < 0) {
             System.out.println("Error, the number can't be more than " + employeeList.size() + " at the moment.");
         } else {
-            SalaryComparator salaryComparator = new SalaryComparator();
-            employeeList.sort(salaryComparator);
+            employeeList.sort(Comparator.comparingDouble(Employee::getMonthSalary));
             System.out.println("TOP LOWEST " + count + " SALARIES");
             for (int i = 0; i < count; i++) {
                 System.out.println((i + 1) + ". " + employeeList.get(i).getMonthSalary());
@@ -101,18 +93,4 @@ public class Company {
         }
     }
 
-    public static class SalaryComparator implements Comparator<Employee> {
-        @Override
-        public int compare(Employee one, Employee another) {
-            if (Math.abs(one.getMonthSalary() - another.getMonthSalary()) < 0.00000001) {
-                return 0;
-            }
-            if (one.getMonthSalary() > another.getMonthSalary()) {
-                return 1;
-            }
-            else {
-                return -1;
-            }
-        }
-    }
 }

@@ -1,8 +1,5 @@
-import Workfiles.Company;
-import Workfiles.Employee;
+import Workfiles.*;
 import Workfiles.Entities.*;
-import Workfiles.Manager;
-import Workfiles.Operator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;
@@ -26,10 +23,6 @@ public class Main {
         Metadata metadata = new MetadataSources(registry).getMetadataBuilder().build();
         sessionFactory = metadata.getSessionFactoryBuilder().build();
 
-        String topManager = "topManager";
-        String manager = "manager";
-        String operator = "operator";
-
         Company bellaz = new Company();
         LOG.info("new company created ");
         bellaz.setCompanyName("BELLAZ");
@@ -38,30 +31,30 @@ public class Main {
         scania.setCompanyName("SCANIA");
         Company mercedes = new Company("MERCEDES");
 
-        bellaz.hire(operator);
+        bellaz.hire(new Operator());
         LOG.info("Company " + bellaz.getCompanyName() + " hired new employee " + bellaz.getEmployeeList().get(0).getClass().toString());
-        bellaz.hire(operator);
+        bellaz.hire(new Operator());
         LOG.info("Company " + bellaz.getCompanyName() + " hired new employee " + bellaz.getEmployeeList().get(1).getClass().toString());
-        bellaz.hire(operator);
+        bellaz.hire(new Operator());
         LOG.info("Company " + bellaz.getCompanyName() + " hired new employee " + bellaz.getEmployeeList().get(2).getClass().toString());
-        bellaz.hire(manager);
+        bellaz.hire(new Manager());
         LOG.info("Company " + bellaz.getCompanyName() + " hired new employee " + bellaz.getEmployeeList().get(3).getClass().toString());
-        bellaz.hire(operator);
+        bellaz.hire(new Operator());
         LOG.info("Company " + bellaz.getCompanyName() + " hired new employee " + bellaz.getEmployeeList().get(4).getClass().toString());
-        bellaz.hire(operator);
+        bellaz.hire(new Operator());
         LOG.info("Company " + bellaz.getCompanyName() + " hired new employee " + bellaz.getEmployeeList().get(5).getClass().toString());
-        bellaz.hire(operator);
+        bellaz.hire(new Operator());
         LOG.info("Company " + bellaz.getCompanyName() + " hired new employee " + bellaz.getEmployeeList().get(6).getClass().toString());
-        bellaz.hire(manager);
+        bellaz.hire(new Manager());
         LOG.info("Company " + bellaz.getCompanyName() + " hired new employee " + bellaz.getEmployeeList().get(7).getClass().toString());
-        bellaz.hire(topManager);
+        bellaz.hire(new TopManager());
         LOG.info("Company " + bellaz.getCompanyName() + " hired new employee " + bellaz.getEmployeeList().get(8).getClass().toString());
 
-        scania.hire(operator);
-        scania.hire(operator);
-        scania.hire(operator);
-        scania.hire(manager);
-        scania.hire(topManager);
+        scania.hire(new Operator());
+        scania.hire(new Operator());
+        scania.hire(new Operator());
+        scania.hire(new Manager());
+        scania.hire(new TopManager());
 
         save(bellaz);
         save(scania);
@@ -76,21 +69,14 @@ public class Main {
     }
 
     public static void save(Company c) {
-        Session session = null;
-        Transaction transaction = null;
-        try {
-            session = sessionFactory.openSession();
-            transaction = session.beginTransaction();
-
+        try (Session session = sessionFactory.openSession()) {
+            Transaction transaction = session.beginTransaction();
             CompanyEntity companyEntity = mapCompany(c);
             session.save(companyEntity);
-
             if (!companyEntity.getEmployeeList().isEmpty()) {
                 companyEntity.getEmployeeList().forEach(session::save);
             }
-
             transaction.commit();
-            session.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
