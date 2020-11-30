@@ -26,7 +26,7 @@ public class CompanyEntity {
     @Column(name = "COMPANY_NAME")
     private String companyName;
 
-    @OneToMany(mappedBy = "companyEntity", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "companyEntity", fetch = FetchType.EAGER)
     protected List<EmployeeEntity> employeeList = new ArrayList<EmployeeEntity>();
 
     @Column(name = "INCOME_GOAL")

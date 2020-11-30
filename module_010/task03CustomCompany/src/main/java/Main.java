@@ -10,6 +10,9 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Main {
 
@@ -23,49 +26,59 @@ public class Main {
         Metadata metadata = new MetadataSources(registry).getMetadataBuilder().build();
         sessionFactory = metadata.getSessionFactoryBuilder().build();
 
-        Company bellaz = new Company();
-        LOG.info("new company created ");
-        bellaz.setCompanyName("BELLAZ");
-        LOG.info("company's name is set to " + bellaz.getCompanyName());
-        Company scania = new Company();
-        scania.setCompanyName("SCANIA");
+        /*Company bellaz = new Company();
+        bellaz.setCompanyName("belLAZ");
+        Company scania = new Company("SCANIA");
         Company mercedes = new Company("MERCEDES");
 
-        bellaz.hire(new Operator());
-        LOG.info("Company " + bellaz.getCompanyName() + " hired new employee " + bellaz.getEmployeeList().get(0).getClass().toString());
-        bellaz.hire(new Operator());
-        LOG.info("Company " + bellaz.getCompanyName() + " hired new employee " + bellaz.getEmployeeList().get(1).getClass().toString());
-        bellaz.hire(new Operator());
-        LOG.info("Company " + bellaz.getCompanyName() + " hired new employee " + bellaz.getEmployeeList().get(2).getClass().toString());
-        bellaz.hire(new Manager());
-        LOG.info("Company " + bellaz.getCompanyName() + " hired new employee " + bellaz.getEmployeeList().get(3).getClass().toString());
-        bellaz.hire(new Operator());
-        LOG.info("Company " + bellaz.getCompanyName() + " hired new employee " + bellaz.getEmployeeList().get(4).getClass().toString());
-        bellaz.hire(new Operator());
-        LOG.info("Company " + bellaz.getCompanyName() + " hired new employee " + bellaz.getEmployeeList().get(5).getClass().toString());
-        bellaz.hire(new Operator());
-        LOG.info("Company " + bellaz.getCompanyName() + " hired new employee " + bellaz.getEmployeeList().get(6).getClass().toString());
-        bellaz.hire(new Manager());
-        LOG.info("Company " + bellaz.getCompanyName() + " hired new employee " + bellaz.getEmployeeList().get(7).getClass().toString());
+        for (int i = 0; i < 6; i++) {
+            bellaz.hire(new Operator());
+        }
+        for (int i = 0; i < 2; i++) {
+            bellaz.hire(new Manager());
+        }
         bellaz.hire(new TopManager());
-        LOG.info("Company " + bellaz.getCompanyName() + " hired new employee " + bellaz.getEmployeeList().get(8).getClass().toString());
 
-        scania.hire(new Operator());
-        scania.hire(new Operator());
-        scania.hire(new Operator());
+
+        for (int i = 0; i < 3; i++) {
+            scania.hire(new Operator());
+        }
         scania.hire(new Manager());
         scania.hire(new TopManager());
 
         save(bellaz);
         save(scania);
-        save(mercedes);
+        save(mercedes);*/
+
+        List<Company> list = loadFromDB();
+        for(Company c : list) {
+            System.out.println(c.getCompanyName() + " " + c.getEmployeeList().size());
+        }
+
+        List<Employee> eList = list.get(0).getEmployeeList();
+        for (Employee e : eList) {
+            System.out.println(e.getCompany().getCompanyName() + " " + e.getClass() + " " + e.getMonthSalary());
+        }
 
         sessionFactory.close();
 
     }
 
-    public static void loadFromDB() {
+    public static List<Company> loadFromDB() {
+        List<Company> companies = new ArrayList<Company>();
+        try (Session session = sessionFactory.openSession()) {
+            Transaction transaction = session.beginTransaction();
 
+            List<CompanyEntity> companyEntities = session.createQuery("from CompanyEntity").list();
+            for (CompanyEntity cE : companyEntities) {
+                companies.add(mapCompany(cE));
+            }
+
+            transaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return companies;
     }
 
     public static void save(Company c) {
@@ -86,20 +99,24 @@ public class Main {
         CompanyEntity companyEntity = new CompanyEntity();
         companyEntity.setCompanyName(c.getCompanyName());
         companyEntity.setCompanyIncomeGoal(c.getCompanyIncomeGoal());
-        c.getEmployeeList().forEach(e -> {
-            companyEntity.getEmployeeList().add(mapEmployee(e, companyEntity));
-        });
-
+        c.getEmployeeList().forEach(e ->
+            companyEntity.getEmployeeList().add(mapEmployee(e, companyEntity)));
         return companyEntity;
     }
 
+    public static Company mapCompany(CompanyEntity cE) {
+        Company company = new Company(cE.getCompanyName());
+        List<Employee> temp = new ArrayList<>();
+        company.setCompanyIncomeGoal(cE.getCompanyIncomeGoal());
+        cE.getEmployeeList().forEach(e -> temp.add(mapEmployee(e, company)));
+        company.setEmployeeList(temp);
+        return company;
+    }
+
     public static EmployeeEntity mapEmployee(Employee e, CompanyEntity cE) {
-
         EmployeeEntity employeeEntity;
-
         if (e instanceof Operator) {
             employeeEntity = new OperatorEntity();
-            employeeEntity.setCompany(cE);
         } else if (e instanceof Manager) {
             employeeEntity = new ManagerEntity();
             ((ManagerEntity) employeeEntity).setSalesAmount(e.getSalesAmount());
@@ -108,9 +125,23 @@ public class Main {
         }
         employeeEntity.setMonthSalary(e.getMonthSalary());
         employeeEntity.setCompany(cE);
-
         return employeeEntity;
     }
 
+    public static Employee mapEmployee(EmployeeEntity eE, Company c) {
+        Employee employee;
+        if (eE instanceof OperatorEntity) {
+            employee = new Operator();
+        } else if (eE instanceof ManagerEntity) {
+            employee = new Manager();
+            ((Manager) employee).setSalesAmount(eE.getSalesAmount());
+        } else {
+            employee = new TopManager();
+        }
+        employee.setMonthSalary(eE.getMonthSalary());
+        employee.setCompany(c);
+
+        return employee;
+    }
 
 }

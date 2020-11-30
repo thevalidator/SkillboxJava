@@ -1,5 +1,8 @@
 package Workfiles;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -8,14 +11,18 @@ import java.util.List;
 
 public class Company {
 
+    final Logger COMPANY_LOG = LogManager.getLogger("trace");
     private String companyName;
     protected List<Employee> employeeList = new ArrayList<>();
     protected double companyIncomeGoal = 3000000.;
 
     public Company() {
+
+        COMPANY_LOG.info( "[" + this.hashCode() + "] " + "New company created.");
     }
     public Company(String name) {
-        this.companyName = name;
+        this.companyName = name.toUpperCase();
+        COMPANY_LOG.info("[" + this.hashCode() + "] " + this.getCompanyName() + " company created.");
     }
 
 
@@ -24,13 +31,16 @@ public class Company {
     }
 
     public void setCompanyName(String companyName) {
-        this.companyName = companyName;
+        this.companyName = companyName.toUpperCase();
+        COMPANY_LOG.info("[" + this.hashCode() + "] " +"Company's name is set to : " + this.companyName);
     }
 
     public void hire(Employee employee) {
         employee.setCompany(this);
         employee.setMonthSalary(employee.getMonthSalary());
         employeeList.add(employee);
+        COMPANY_LOG.info("[" + this.hashCode() + "] " + "Company " + this.getCompanyName() + " hired new employee "
+                + this.getEmployeeList().get(employeeList.size() - 1).getClass().toString());
     }
 
     public void hireAll() {
@@ -59,6 +69,10 @@ public class Company {
 
     public List<Employee> getEmployeeList() {
         return Collections.unmodifiableList(employeeList);
+    }
+
+    public void setEmployeeList(List<Employee> employeeList) {
+        this.employeeList = employeeList;
     }
 
     public double getCompanyIncomeGoal() {
