@@ -16,7 +16,7 @@
         <property name="show_sql">false</property>
         <!-- Set the current session context -->
         <property name="current_session_context_class">thread</property>
-        <!-- xxxxx the database schema on startup
+        <!-- What to do with the database schema on startup
         <property name="hbm2ddl.auto">create</property>
         -->
 

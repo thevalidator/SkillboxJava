@@ -1,3 +1,4 @@
+import Utilities.CompanyMapper;
 import Workfiles.*;
 import Workfiles.Entities.*;
 import org.apache.logging.log4j.LogManager;
@@ -26,7 +27,7 @@ public class Main {
         Metadata metadata = new MetadataSources(registry).getMetadataBuilder().build();
         sessionFactory = metadata.getSessionFactoryBuilder().build();
 
-        /*Company bellaz = new Company();
+/*        Company bellaz = new Company();
         bellaz.setCompanyName("belLAZ");
         Company scania = new Company("SCANIA");
         Company mercedes = new Company("MERCEDES");
@@ -46,13 +47,20 @@ public class Main {
         scania.hire(new Manager());
         scania.hire(new TopManager());
 
-        save(bellaz);
-        save(scania);
-        save(mercedes);*/
+        Company volvo = new Company("volvo");
+        volvo.hire(new Operator());
+        volvo.hire(new Manager());
 
-        List<Company> list = loadFromDB();
+        saveWithMapStruct(bellaz);
+        saveWithMapStruct(scania);
+        saveWithMapStruct(mercedes);
+        saveWithMapStruct(volvo);*/
+
+
+//        List<Company> list = loadFromDB();
+        List<Company> list = loadWithMapstruct();
         for(Company c : list) {
-            System.out.println(c.getCompanyName() + " " + c.getEmployeeList().size());
+            System.out.println("[" + c.hashCode() + "] " + c.getCompanyName() + " " + c.getEmployeeList().size());
         }
 
         List<Employee> eList = list.get(0).getEmployeeList();
@@ -64,12 +72,14 @@ public class Main {
 
     }
 
-    public static List<Company> loadFromDB() {
+/*    public static List<Company> loadFromDB() {
         List<Company> companies = new ArrayList<Company>();
         try (Session session = sessionFactory.openSession()) {
             Transaction transaction = session.beginTransaction();
 
-            List<CompanyEntity> companyEntities = session.createQuery("from CompanyEntity").list();
+            List<CompanyEntity> companyEntities = session.createQuery("from CompanyEntity c" +
+                    " join fetch c.employeeList l", CompanyEntity.class)
+                    .list();
             for (CompanyEntity cE : companyEntities) {
                 companies.add(mapCompany(cE));
             }
@@ -79,9 +89,9 @@ public class Main {
             e.printStackTrace();
         }
         return companies;
-    }
+    }*/
 
-    public static void save(Company c) {
+/*    public static void save(Company c) {
         try (Session session = sessionFactory.openSession()) {
             Transaction transaction = session.beginTransaction();
             CompanyEntity companyEntity = mapCompany(c);
@@ -93,27 +103,60 @@ public class Main {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }*/
+
+    public static void saveWithMapStruct ( Company c) {
+        try (Session session = sessionFactory.openSession()) {
+            Transaction transaction = session.beginTransaction();
+            CompanyEntity companyEntity = CompanyMapper.INSTANCE.companyToCompanyEntity(c);
+            session.save(companyEntity);
+            if (!companyEntity.getEmployeeList().isEmpty()) {
+                companyEntity.getEmployeeList().forEach(session::save);
+            }
+            transaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
-    public static CompanyEntity mapCompany(Company c) {
+    public static List<Company> loadWithMapstruct() {
+        List<Company> companies = new ArrayList<Company>();
+        try (Session session = sessionFactory.openSession()) {
+            Transaction transaction = session.beginTransaction();
+
+            List<CompanyEntity> companyEntities = session.createQuery("from CompanyEntity c" +
+                    " join fetch c.employeeList l", CompanyEntity.class)
+                    .list();
+            for (CompanyEntity cE : companyEntities) {
+                companies.add(CompanyMapper.INSTANCE.companyEntityToCompany(cE));
+            }
+
+            transaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return companies;
+    }
+
+/*    public static CompanyEntity mapCompany(Company c) {
         CompanyEntity companyEntity = new CompanyEntity();
         companyEntity.setCompanyName(c.getCompanyName());
         companyEntity.setCompanyIncomeGoal(c.getCompanyIncomeGoal());
         c.getEmployeeList().forEach(e ->
             companyEntity.getEmployeeList().add(mapEmployee(e, companyEntity)));
         return companyEntity;
-    }
+    }*/
 
-    public static Company mapCompany(CompanyEntity cE) {
+/*    public static Company mapCompany(CompanyEntity cE) {
         Company company = new Company(cE.getCompanyName());
         List<Employee> temp = new ArrayList<>();
         company.setCompanyIncomeGoal(cE.getCompanyIncomeGoal());
         cE.getEmployeeList().forEach(e -> temp.add(mapEmployee(e, company)));
         company.setEmployeeList(temp);
         return company;
-    }
+    }*/
 
-    public static EmployeeEntity mapEmployee(Employee e, CompanyEntity cE) {
+/*    public static EmployeeEntity mapEmployee(Employee e, CompanyEntity cE) {
         EmployeeEntity employeeEntity;
         if (e instanceof Operator) {
             employeeEntity = new OperatorEntity();
@@ -126,9 +169,9 @@ public class Main {
         employeeEntity.setMonthSalary(e.getMonthSalary());
         employeeEntity.setCompany(cE);
         return employeeEntity;
-    }
+    }*/
 
-    public static Employee mapEmployee(EmployeeEntity eE, Company c) {
+/*    public static Employee mapEmployee(EmployeeEntity eE, Company c) {
         Employee employee;
         if (eE instanceof OperatorEntity) {
             employee = new Operator();
@@ -142,6 +185,6 @@ public class Main {
         employee.setCompany(c);
 
         return employee;
-    }
+    }*/
 
 }
