@@ -4,9 +4,7 @@ import Workfiles.*;
 import Workfiles.Entities.*;
 import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
-import org.w3c.dom.stylesheets.LinkStyle;
 
-import java.util.List;
 
 @Mapper
 @DecoratedWith(CompanyMapperDecorator.class)
@@ -47,6 +45,5 @@ public interface CompanyMapper {
         employee.setMonthSalary(eE.getMonthSalary());
         return employee;
     }
-
 
 }

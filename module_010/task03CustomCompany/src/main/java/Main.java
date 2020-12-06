@@ -72,39 +72,6 @@ public class Main {
 
     }
 
-/*    public static List<Company> loadFromDB() {
-        List<Company> companies = new ArrayList<Company>();
-        try (Session session = sessionFactory.openSession()) {
-            Transaction transaction = session.beginTransaction();
-
-            List<CompanyEntity> companyEntities = session.createQuery("from CompanyEntity c" +
-                    " join fetch c.employeeList l", CompanyEntity.class)
-                    .list();
-            for (CompanyEntity cE : companyEntities) {
-                companies.add(mapCompany(cE));
-            }
-
-            transaction.commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return companies;
-    }*/
-
-/*    public static void save(Company c) {
-        try (Session session = sessionFactory.openSession()) {
-            Transaction transaction = session.beginTransaction();
-            CompanyEntity companyEntity = mapCompany(c);
-            session.save(companyEntity);
-            if (!companyEntity.getEmployeeList().isEmpty()) {
-                companyEntity.getEmployeeList().forEach(session::save);
-            }
-            transaction.commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }*/
-
     public static void saveWithMapStruct ( Company c) {
         try (Session session = sessionFactory.openSession()) {
             Transaction transaction = session.beginTransaction();
@@ -137,54 +104,5 @@ public class Main {
         }
         return companies;
     }
-
-/*    public static CompanyEntity mapCompany(Company c) {
-        CompanyEntity companyEntity = new CompanyEntity();
-        companyEntity.setCompanyName(c.getCompanyName());
-        companyEntity.setCompanyIncomeGoal(c.getCompanyIncomeGoal());
-        c.getEmployeeList().forEach(e ->
-            companyEntity.getEmployeeList().add(mapEmployee(e, companyEntity)));
-        return companyEntity;
-    }*/
-
-/*    public static Company mapCompany(CompanyEntity cE) {
-        Company company = new Company(cE.getCompanyName());
-        List<Employee> temp = new ArrayList<>();
-        company.setCompanyIncomeGoal(cE.getCompanyIncomeGoal());
-        cE.getEmployeeList().forEach(e -> temp.add(mapEmployee(e, company)));
-        company.setEmployeeList(temp);
-        return company;
-    }*/
-
-/*    public static EmployeeEntity mapEmployee(Employee e, CompanyEntity cE) {
-        EmployeeEntity employeeEntity;
-        if (e instanceof Operator) {
-            employeeEntity = new OperatorEntity();
-        } else if (e instanceof Manager) {
-            employeeEntity = new ManagerEntity();
-            ((ManagerEntity) employeeEntity).setSalesAmount(e.getSalesAmount());
-        } else {
-            employeeEntity = new TopManagerEntity();
-        }
-        employeeEntity.setMonthSalary(e.getMonthSalary());
-        employeeEntity.setCompany(cE);
-        return employeeEntity;
-    }*/
-
-/*    public static Employee mapEmployee(EmployeeEntity eE, Company c) {
-        Employee employee;
-        if (eE instanceof OperatorEntity) {
-            employee = new Operator();
-        } else if (eE instanceof ManagerEntity) {
-            employee = new Manager();
-            ((Manager) employee).setSalesAmount(eE.getSalesAmount());
-        } else {
-            employee = new TopManager();
-        }
-        employee.setMonthSalary(eE.getMonthSalary());
-        employee.setCompany(c);
-
-        return employee;
-    }*/
 
 }
