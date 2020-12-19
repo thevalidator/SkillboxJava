@@ -19,8 +19,10 @@
         <!-- Validate the database schema on startup -->
         <property name="hbm2ddl.auto">validate</property>
 
-        <mapping class="pkg.Course"></mapping>
-        <mapping class="pkg.Student"></mapping>
+        <mapping class="pkg.Course"/>
+        <mapping class="pkg.Student"/>
+        <mapping class="pkg.Teacher"/>
+
 
     </session-factory>
 </hibernate-configuration>

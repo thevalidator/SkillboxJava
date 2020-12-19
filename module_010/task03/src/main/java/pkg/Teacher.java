@@ -1,20 +1,18 @@
 package pkg;
 
+
 import javax.persistence.*;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
 
 @Entity
-@Table(name = "Students")
-public class Student {
+@Table(name = "TEACHERS")
+public class Teacher {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
+    private int salary;
     private int age;
-    @Column(name = "registration_date")
-    private LocalDateTime registrationDate;
 
     public int getId() {
         return id;
@@ -32,6 +30,14 @@ public class Student {
         this.name = name;
     }
 
+    public int getSalary() {
+        return salary;
+    }
+
+    public void setSalary(int salary) {
+        this.salary = salary;
+    }
+
     public int getAge() {
         return age;
     }
@@ -40,11 +46,4 @@ public class Student {
         this.age = age;
     }
 
-    public LocalDateTime getRegistrationDate() {
-        return registrationDate;
-    }
-
-    public void setRegistrationDate(LocalDateTime registrationDate) {
-        this.registrationDate = registrationDate;
-    }
 }
